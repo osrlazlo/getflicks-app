@@ -1,0 +1,15 @@
+.header-container {
+    border: 1px dashed purple;
+    display: flex;
+    padding: 5px;
+    height: 40px;
+    align-items: center;
+}
+
+#header-logo {
+    max-height: 40px;
+}
+
+.logo-container {
+    width: 50vw;
+}

@@ -1,0 +1,11 @@
+.page-container {
+    padding: 10px;
+}
+
+body {
+    display: inline;
+}
+
+.main-content {
+    display: flex;
+}

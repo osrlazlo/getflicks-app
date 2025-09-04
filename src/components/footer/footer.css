@@ -1,0 +1,15 @@
+.footer-container {
+    border: 1px dashed purple;
+    display: flex;
+    padding: 5px;
+    height: 25px;
+    align-items: center;
+}
+
+#logo {
+    max-height: 25px;
+}
+
+.logo-container {
+    width: 30vw;
+}

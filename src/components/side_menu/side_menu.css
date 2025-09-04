@@ -1,0 +1,8 @@
+.side-menu {
+    border: 1px dashed purple;
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    max-width: 150px;
+
+}
