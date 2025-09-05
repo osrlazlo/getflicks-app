@@ -1,5 +1,6 @@
 import MovieCard from "../MovieCard.jsx"
 import "../body.css"
+import FilterSelector from "./FilterSelector.jsx"
 
 function Discover() {
 
@@ -10,6 +11,7 @@ function Discover() {
     return(
         <div className="dicover-container">
         <div className="discover-header">
+            <FilterSelector/>
         </div>
         <div className="discover-header-results">
             <h3>{} result(s) found</h3>
