@@ -18,13 +18,18 @@ async function handler(req, res) {
     try {
         const response = await fetch(
             "https://api.themoviedb.org/3/genre/movie/list?language=en",
-            options)    
-        console.log(response)
+            options)  
+
+        if (!response.ok) {
+            throw new Error(`TMDB error: ${response.status}`)
+        }
+
         const data = await response.json()
         res.status(200).json(data)
     }
     catch(error) {
-        console.error(error)
+        console.error("API /genres failed",error)
+        res.status(500).json({error: "Failed to fetch genres"})
     }
 }
 
