@@ -1,4 +1,4 @@
-import MovieCard from "./Movie_card"
+import MovieCard from "../MovieCard.jsx"
 import "../body.css"
 
 function Discover() {
