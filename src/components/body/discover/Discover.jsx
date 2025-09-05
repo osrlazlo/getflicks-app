@@ -1,5 +1,5 @@
 import MovieCard from "./Movie_card"
-import "./body.css"
+import "../body.css"
 
 function Discover() {
 

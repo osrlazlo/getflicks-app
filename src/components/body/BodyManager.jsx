@@ -1,4 +1,4 @@
-import Discover from "./Discover";
+import Discover from "./discover/Discover.jsx";
 
 function BodyManager() {
     return(
