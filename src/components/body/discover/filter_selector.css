@@ -68,7 +68,7 @@
     background-color: hsl(193, 99%, 50%);
 }
 
-.genre-item {
+.genre-item, .genre-item-checked {
     border: 1px solid black;
     border-radius: 5px;
     padding: 3px;
@@ -85,10 +85,5 @@
 }
 
 .genre-item-checked {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 3px;
-    margin: 2px;
-    width: 125px;
     background-color: lightgray;
 }
