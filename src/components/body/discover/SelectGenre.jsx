@@ -46,8 +46,8 @@ function SelectGenre() {
             <div className="header">
                 <button id="select-all-genres" onClick={() => toggleAll(true)}>All</button>
                 <button id="select-none-genres" onClick={() => toggleAll(false)}>None</button>
-             </div>
-               {genres.map((g,i) => (
+             </div> 
+             {isOpen? genres.map((g,i) => (
                     <li key={g.id} 
                         className={"genre-item"+(g.isChecked? "-checked":"")} 
                         onClick={() => checkItem(i)}>
@@ -59,7 +59,7 @@ function SelectGenre() {
                     onChange={() => checkItem(i)}/>
                     {g.name}
                 </li>
-               ))}
+               )) : null}
         </div>
         </>
     )

@@ -26,7 +26,8 @@
     width: 150px;
     padding:3px;
     margin-top: 3px;
-    height: 40vh;
+    height: fit-content;
+    max-height: 40vh;
     overflow: scroll;
     box-shadow: 2px 2px 5px lightgray;
     list-style: none;
@@ -35,12 +36,18 @@
     flex-direction: column;
     align-items: center;
     opacity: 0;
+    transform: translateY(-5%);
+    transition: transform 150ms ease-in-out,
+                opacity 100ms ease-in-out;
 }
 .genre-list-open {
     opacity: 1;
+    transform: translateY(0%);
+    transition: transform 150ms ease-in-out,
+                opacity 100ms ease-in-out;
 }
 
-.genre-list-open .header button {
+.header button  {
     width: 50px;
     margin: 3px;
     padding: 3px;
