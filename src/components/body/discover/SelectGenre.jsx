@@ -38,6 +38,7 @@ function SelectGenre() {
 
     const dropdownRef = useRef(null)
     const genresRef = useRef(null)
+    const iconRef = useRef(null)
     useEffect(() => {
         
         function handler(e) {
@@ -60,7 +61,9 @@ function SelectGenre() {
         <>
         <div ref={genresRef} className="button-select-genres" onClick={() => setIsOpen(s => !s)}>
             Genres {`(${countChecked()})`}
-           {isOpen ? <FaChevronUp className="icon"/> : <FaChevronDown className="icon"/> } 
+           <div ref={iconRef}>
+            {isOpen ? <FaChevronUp className="icon"/> : <FaChevronDown className="icon"/> } 
+            </div>
         </div>
         <div ref={dropdownRef} className={"genre-list"+(isOpen? "-open":"")}>
             <div className="header">
