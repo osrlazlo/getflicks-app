@@ -37,13 +37,15 @@ function SelectGenre() {
     }
 
     const dropdownRef = useRef(null)
+    const genresRef = useRef(null)
     useEffect(() => {
         
         function handler(e) {
             console.log(e)
             console.log(dropdownRef.current)
-            if (dropdownRef.current 
-                && !dropdownRef.current.contains(e.target)) {
+            console.log(genresRef.current)
+            if (!dropdownRef.current.contains(e.target)
+                & !genresRef.current.contains(e.target)) {
                    console.log("click") 
                    setIsOpen(s => false)
                 }
@@ -56,7 +58,7 @@ function SelectGenre() {
 
     return(
         <>
-        <div ref={dropdownRef} className="button-select-genres" onClick={() => setIsOpen(s => !s)}>
+        <div ref={genresRef} className="button-select-genres" onClick={() => setIsOpen(s => !s)}>
             Genres {`(${countChecked()})`}
            {isOpen ? <FaChevronUp className="icon"/> : <FaChevronDown className="icon"/> } 
         </div>
