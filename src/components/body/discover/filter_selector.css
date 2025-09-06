@@ -10,8 +10,9 @@
 }
 .icon{
     position: relative;
-    right: 5px;
+    right: 3px;
 }
+
 .button-select-genres:hover {
     background-color: hsl(0, 0%, 90%);
 }

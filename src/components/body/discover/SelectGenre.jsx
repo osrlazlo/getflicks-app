@@ -36,17 +36,15 @@ function SelectGenre() {
         return count.length
     }
 
-    const dropdownRef = useRef(null)
-    const genresRef = useRef(null)
-    const iconRef = useRef(null)
+    const dropdownRef = useRef();
     useEffect(() => {
         
         function handler(e) {
             console.log(e)
-            console.log(dropdownRef.current)
-            console.log(genresRef.current)
-            if (!dropdownRef.current.contains(e.target)
-                & !genresRef.current.contains(e.target)) {
+            console.log(dropdownRef)
+            console.log(dropdownRef.current.contains(e.target))
+            if (!dropdownRef.current) return
+            if (!dropdownRef.current.contains(e.target)) {
                    console.log("click") 
                    setIsOpen(s => false)
                 }
@@ -59,32 +57,32 @@ function SelectGenre() {
 
     return(
         <>
-        <div ref={genresRef} className="button-select-genres" onClick={() => setIsOpen(s => !s)}>
-            Genres {`(${countChecked()})`}
-           <div ref={iconRef}>
-            {isOpen ? <FaChevronUp className="icon"/> : <FaChevronDown className="icon"/> } 
+            <div className="button-select-genres" onClick={(e) => {e.stopPropagation(); setIsOpen(s => !s)}}>
+                Genres {`(${countChecked()})`}
+                {isOpen ? <FaChevronUp className="icon"/> : <FaChevronDown className="icon"/> } 
             </div>
-        </div>
-        <div ref={dropdownRef} className={"genre-list"+(isOpen? "-open":"")}>
-            <div className="header">
-                <button id="select-all-genres" onClick={() => toggleAll(true)}>All</button>
-                <button id="select-none-genres" onClick={() => toggleAll(false)}>None</button>
-             </div> 
-             {isOpen? genres.map((g,i) => (
-                    <li key={g.id} 
-                        className={"genre-item"+(g.isChecked? "-checked":"")} 
-                        onClick={() => checkItem(i)}>
-                    <input 
-                    className="genre-checkbox"
-                    id={`checkbox_${g.id}`} 
-                    type="checkbox"
-                    checked={g.isChecked}
-                    onChange={() => checkItem(i)}/>
-                    {g.name}
-                </li>
-               )) : null}
-        </div>
+            <div className={"genre-list"+(isOpen? "-open":"")}
+                    ref={dropdownRef}>
+                <div className="header">
+                    <button id="select-all-genres" onClick={() => toggleAll(true)}>All</button>
+                    <button id="select-none-genres" onClick={() => toggleAll(false)}>None</button>
+                </div> 
+                {isOpen? genres.map((g,i) => (
+                        <li key={g.id} 
+                            className={"genre-item"+(g.isChecked? "-checked":"")} 
+                            onClick={() => checkItem(i)}>
+                        <input 
+                        className="genre-checkbox"
+                        id={`checkbox_${g.id}`} 
+                        type="checkbox"
+                        checked={g.isChecked}
+                        onChange={() => checkItem(i)}/>
+                        {g.name}
+                    </li>
+                )) : null}
+            </div>
         </>
+        
     )
 }
 
