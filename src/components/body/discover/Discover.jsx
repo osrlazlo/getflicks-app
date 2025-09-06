@@ -1,6 +1,8 @@
 import MovieCard from "../MovieCard.jsx"
-import "../body.css"
 import FilterSelector from "./FilterSelector.jsx"
+
+import "../body.css"
+import "./filter_selector.css"
 
 function Discover() {
 

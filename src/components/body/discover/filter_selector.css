@@ -1,0 +1,80 @@
+.button-select-genres {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 150px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px 2px 5px lightgray;
+}
+.icon{
+    position: relative;
+    right: 5px;
+}
+.button-select-genres:hover {
+    background-color: hsl(0, 0%, 90%);
+}
+.button-select-genres:active {
+    background-color: hsl(0, 0%, 80%);
+}
+
+.genre-list, .genre-list-open {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+    width: 150px;
+    padding:3px;
+    margin-top: 3px;
+    height: 40vh;
+    overflow: scroll;
+    box-shadow: 2px 2px 5px lightgray;
+    list-style: none;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+}
+.genre-list-open {
+    opacity: 1;
+}
+
+.genre-list-open .header button {
+    width: 50px;
+    margin: 3px;
+    padding: 3px;
+    background-color: rgb(1, 180, 228);
+    border: none;
+    border-radius: 5px;
+}
+.genre-list-open .header button:hover {
+    background-color: hsl(193, 99%, 41%);
+}
+.genre-list-open .header button:active {
+    background-color: hsl(193, 99%, 50%);
+}
+
+.genre-item {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 2px;
+    width: 125px;
+}
+.genre-item:hover {
+    background-color: hsl(0, 0%, 90%);
+}
+
+.genre-item:active {
+    background-color: hsl(0, 0%, 80%);
+}
+
+.genre-item-checked {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 2px;
+    width: 125px;
+    background-color: lightgray;
+}
