@@ -87,3 +87,6 @@
 .genre-item-checked {
     background-color: lightgray;
 }
+.genre-item-checked:hover {
+    background-color: hsl(0, 0%, 78%);
+}
