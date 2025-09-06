@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./filter_selector.css"
 
 import {FaChevronDown} from "react-icons/fa"
@@ -36,13 +36,31 @@ function SelectGenre() {
         return count.length
     }
 
+    const dropdownRef = useRef(null)
+    useEffect(() => {
+        
+        function handler(e) {
+            console.log(e)
+            console.log(dropdownRef.current)
+            if (dropdownRef.current 
+                && !dropdownRef.current.contains(e.target)) {
+                   console.log("click") 
+                   setIsOpen(s => false)
+                }
+            }
+        document.addEventListener("click", handler)
+        return () => {
+            document.removeEventListener("click", handler)
+        }
+    })
+
     return(
         <>
-        <div className="button-select-genres" onClick={() => setIsOpen(s => !s)}>
+        <div ref={dropdownRef} className="button-select-genres" onClick={() => setIsOpen(s => !s)}>
             Genres {`(${countChecked()})`}
            {isOpen ? <FaChevronUp className="icon"/> : <FaChevronDown className="icon"/> } 
         </div>
-        <div className={"genre-list"+(isOpen? "-open":"")}>
+        <div ref={dropdownRef} className={"genre-list"+(isOpen? "-open":"")}>
             <div className="header">
                 <button id="select-all-genres" onClick={() => toggleAll(true)}>All</button>
                 <button id="select-none-genres" onClick={() => toggleAll(false)}>None</button>

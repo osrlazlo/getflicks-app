@@ -40,11 +40,15 @@
     transition: transform 150ms ease-in-out,
                 opacity 100ms ease-in-out;
 }
+.genre-list {
+    pointer-events: none;
+}
 .genre-list-open {
     opacity: 1;
     transform: translateY(0%);
     transition: transform 150ms ease-in-out,
                 opacity 100ms ease-in-out;
+    pointer-events: all;
 }
 
 .header button  {
@@ -54,6 +58,7 @@
     background-color: rgb(1, 180, 228);
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 .genre-list-open .header button:hover {
     background-color: hsl(193, 99%, 41%);
@@ -68,6 +73,7 @@
     padding: 3px;
     margin: 2px;
     width: 125px;
+    cursor: pointer;
 }
 .genre-item:hover {
     background-color: hsl(0, 0%, 90%);
