@@ -6,7 +6,7 @@ function Footer() {
         <div className="footer-container">
             <p>&copy; {new Date().getFullYear()} getflicks - All data sourced from &nbsp;</p>
         <div className="logo-container">
-            <a href="https://www.themoviedb.org/">
+            <a href="https://www.themoviedb.org/" target="blank">
             <img id="logo" src={logo_blue_short} alt="TMDB logo blue_short"></img>
             </a>
         </div>

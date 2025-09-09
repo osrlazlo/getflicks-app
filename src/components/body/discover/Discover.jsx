@@ -12,9 +12,7 @@ function Discover() {
 
     return(
         <div className="dicover-container">
-        <div className="discover-header">
-            <FilterSelector/>
-        </div>
+
         <div className="discover-header-results">
             <h3>{} result(s) found</h3>
         </div>

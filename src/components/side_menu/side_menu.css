@@ -2,7 +2,6 @@
     border: 1px dashed purple;
     display: flex;
     flex-direction: column;
-    width: 25vw;
-    max-width: 150px;
-
+    width: 30vw;
+    max-width: 200px;   
 }

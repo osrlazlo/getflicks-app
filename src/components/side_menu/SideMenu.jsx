@@ -1,5 +1,7 @@
+import FilterSelector from "../body/discover/FilterSelector"
 import ButtonSideMenu from "./Button_sm"
 import "./side_menu.css"
+
 
 function SideMenu() {
     return(
@@ -8,6 +10,9 @@ function SideMenu() {
             <ButtonSideMenu label="Latest"/>
             <ButtonSideMenu label="Discover"/>
             <ButtonSideMenu label="About"/>
+            <div className="discover-header">
+                <FilterSelector/>
+            </div>
         </div>
     )
 }

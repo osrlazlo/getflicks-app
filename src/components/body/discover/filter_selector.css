@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: 2px 2px 5px lightgray;
+    cursor: pointer;
 }
 .icon{
     position: relative;

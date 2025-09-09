@@ -1,6 +1,8 @@
 .dicover-container {
   border: 2px dotted darkblue;
   width: 100%;
+  height: 85vh;
+  overflow: scroll;
 }
 
 .discover-header {

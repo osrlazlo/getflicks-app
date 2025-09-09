@@ -40,6 +40,7 @@ function SelectGenre() {
     useEffect(() => {
         
         function handler(e) {
+            if (!isOpen) return
             console.log(e)
             console.log(dropdownRef)
             console.log(dropdownRef.current.contains(e.target))

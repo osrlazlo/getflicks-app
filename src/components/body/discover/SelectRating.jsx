@@ -1,0 +1,25 @@
+import { useState } from "react"
+
+function SelectRating() {
+
+    const [rating, setRating] = useState(7.0)
+
+    function updtLabel(value) {
+        setRating(r => value)
+    }
+
+    return(
+        <>
+        <h4>Rating</h4>
+        <label htmlFor="rating">Minimum rating: {Number(rating).toFixed(1)}</label>
+        <input type="range" className="input-range" 
+                id="select-rating" name="rating" 
+                min="0" max="10" step="0.5"
+                value={rating}
+                onChange={(e) => updtLabel(e.target.value)}></input>
+        
+        </>
+    )
+}
+
+export default SelectRating
