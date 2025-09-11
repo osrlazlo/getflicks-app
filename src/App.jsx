@@ -10,16 +10,18 @@ function App() {
 
   return (
     <div className='page-container'>
-    <header>
-      <Header/>
-    </header>
-    <div className="main-content">
-      <SideMenu/>
-      <BodyManager/>
-    </div>
-    <footer>
-      <Footer/>
-    </footer>
+      <div className='page'>
+        <header>
+          <Header/>
+        </header>
+        <div className="main-content">
+          <SideMenu/>
+          <BodyManager/>
+        </div>
+        <footer>
+          <Footer/>
+        </footer>
+      </div>
     </div>
   )
 }

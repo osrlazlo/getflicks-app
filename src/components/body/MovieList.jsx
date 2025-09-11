@@ -1,10 +1,8 @@
-import MovieCard from "../MovieCard.jsx"
-import FilterSelector from "./FilterSelector.jsx"
+import MovieCard from "./MovieCard.jsx"
+import "./body.css"
 
-import "../body.css"
-import "./filter_selector.css"
 
-function Discover() {
+function MovieList() {
 
     const movieList = [{id:"1", title:"title", desc:"desc", srcPoster:"https://image.tmdb.org/t/p/w1280/ombsmhYUqR4qqOLOxAyr5V8hbyv.jpg", rate:"100"},
                         {id:"2", title:"title2", desc:"desc2", srcPoster:"link2", rate:"10"}
@@ -31,4 +29,4 @@ function Discover() {
     )
 }
 
-export default Discover
+export default MovieList

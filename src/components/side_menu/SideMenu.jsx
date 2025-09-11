@@ -10,7 +10,7 @@ function SideMenu() {
             <ButtonSideMenu label="Latest"/>
             <ButtonSideMenu label="Discover"/>
             <ButtonSideMenu label="About"/>
-            <div className="discover-header">
+            <div className="discover-filters">
                 <FilterSelector/>
             </div>
         </div>

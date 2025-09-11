@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import DropdownCheckbox from "./DropdownSelect.jsx"
 
-function SelectCountry() {
+function SelectCountry({setParamCountries}) {
 
     const [countries, setCountries] = useState([])
 
@@ -16,7 +16,7 @@ function SelectCountry() {
 
     countries.sort((a,b) => a.name.localeCompare(b.name))
 
-    return(<DropdownCheckbox list={countries} listType="countries" multiple={true}/>)
+    return(<DropdownCheckbox list={countries} listType="countries" multiple={true} setParam={setParamCountries}/>)
 }
 
 export default SelectCountry

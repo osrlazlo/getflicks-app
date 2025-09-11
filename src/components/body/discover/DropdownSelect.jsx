@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useContext } from "react";
-import "./filter_selector.css"
+import "./filters.css"
 
 import {FaChevronDown} from "react-icons/fa"
 import {FaChevronUp} from "react-icons/fa"
@@ -64,6 +64,7 @@ function DropdownSelect(props) {
         else {updtSelect = itemList.map((item,i) => item = {...item, isChecked: i === index? true:false})
         }
         setItemList(i => updtSelect)
+        props.setParam(p => updtSelect)
         setCheckedIndex(c => index)
     }
 

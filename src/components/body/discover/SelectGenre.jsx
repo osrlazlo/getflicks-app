@@ -1,9 +1,8 @@
 import { useEffect, useContext, useState } from "react";
-import "./filter_selector.css"
 
 import DropdownCheckbox from "./DropdownSelect.jsx";
 
-function SelectGenre() {
+function SelectGenre({setParamGenres}) {
 
     const [genres, setGenres] = useState([])
     const [isOpen, setIsOpen] = useState(false)
@@ -17,7 +16,7 @@ function SelectGenre() {
         }
         loadGenres()},[])
 
-   return(<><DropdownCheckbox list={genres} listType="genres" multiple={true}/></>)
+   return(<><DropdownCheckbox list={genres} listType="genres" multiple={true} setParam={setParamGenres}/></>)
 }
 
 export default SelectGenre

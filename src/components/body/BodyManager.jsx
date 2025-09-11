@@ -1,9 +1,9 @@
-import Discover from "./discover/Discover.jsx";
+import MovieList from "./MovieList.jsx";
 
 function BodyManager() {
     return(
         <>
-        <Discover/>
+        <MovieList/>
         </>
     )
 }

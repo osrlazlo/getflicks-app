@@ -1,9 +1,39 @@
+.filter-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h4, h5 {
+    margin: 15px 0px 0px 0px;
+}
+
+input {
+    margin: 15px 0px 0px 10px;
+}
+
+label {
+    margin-top: 15px;
+}
+
+.filter-selector button {
+    margin: 5px;
+}
+
+.date {
+    display: flex;
+}
+#date-to {
+    margin-bottom: 15px;
+}
+
 .button-select {
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
     width: 150px;
     padding: 3px;
+    margin: 15px 0px 5px 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -104,3 +134,4 @@
     width: 20px;
     margin: 0px 8px 0px 2px;
 }
+

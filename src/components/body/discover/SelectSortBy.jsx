@@ -1,7 +1,6 @@
 import DropdownSelect from "./DropdownSelect"
-import "./filter_selector.css"
 
-function SelectSortBy() {
+function SelectSortBy({setParamSortBy}) {
 
     const sortOptions = [
         {sortCode: "original_title.asc", name: "Title (A-Z)"},
@@ -12,7 +11,7 @@ function SelectSortBy() {
         {sortCode: "vote_average.asc", name: "Lowest Rating"}
     ]
 
-   return(<DropdownSelect list={sortOptions} listType="sort-by"/>)
+   return(<DropdownSelect list={sortOptions} listType="sort-by" multiple={false} setParam = {setParamSortBy}/>)
 }
 
 export default SelectSortBy
