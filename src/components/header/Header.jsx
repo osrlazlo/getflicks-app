@@ -11,6 +11,11 @@ function Header() {
                 <img id="header-logo" src={logo_blue_short} alt="TMDB logo blue_long_1"></img>
                 </a>
             </div>
+            <div className="logo-container">
+                <a href="https://restcountries.com/#rest-countries" target="blank">
+                <h3>REST Countries</h3>
+                </a>
+            </div>
         </div>
     )
 }

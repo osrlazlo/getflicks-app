@@ -1,6 +1,7 @@
-.button-select-genres {
+.button-select {
     border: 1px solid black;
     border-radius: 5px;
+    background-color: white;
     width: 150px;
     padding: 3px;
     display: flex;
@@ -14,20 +15,22 @@
     right: 3px;
 }
 
-.button-select-genres:hover {
+.button-select:hover {
     background-color: hsl(0, 0%, 90%);
 }
-.button-select-genres:active {
+.button-select:active {
     background-color: hsl(0, 0%, 80%);
 }
 
-.genre-list, .genre-list-open {
+.dropdown-list, .dropdown-list-open {
     border: 1px solid black;
     background-color: white;
     border-radius: 5px;
     width: 150px;
+    max-width: 50vw;
+    min-width: fit-content;
     padding:3px;
-    margin-top: 3px;
+    margin-top: 0px;
     height: fit-content;
     max-height: 40vh;
     overflow: scroll;
@@ -42,15 +45,16 @@
     transition: transform 150ms ease-in-out,
                 opacity 100ms ease-in-out;
 }
-.genre-list {
+.dropdown-list {
     pointer-events: none;
 }
-.genre-list-open {
+.dropdown-list-open {
     opacity: 1;
     transform: translateY(0%);
     transition: transform 150ms ease-in-out,
                 opacity 100ms ease-in-out;
     pointer-events: all;
+    z-index: 1000;
 }
 
 .header button  {
@@ -62,32 +66,41 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.genre-list-open .header button:hover {
+.dropdown-list-open .header button:hover {
     background-color: hsl(193, 99%, 41%);
 }
-.genre-list-open .header button:active {
+.dropdown-list-open .header button:active {
     background-color: hsl(193, 99%, 50%);
 }
 
-.genre-item, .genre-item-checked {
+.item, .item-checked {
     border: 1px solid black;
     border-radius: 5px;
     padding: 3px;
     margin: 2px;
-    width: 125px;
+    width: 100%;
+    max-width: 50vw;
+    min-width: fit-content;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
-.genre-item:hover {
+.item:hover {
     background-color: hsl(0, 0%, 90%);
 }
 
-.genre-item:active {
+.item:active {
     background-color: hsl(0, 0%, 80%);
 }
 
-.genre-item-checked {
+.item-checked {
     background-color: lightgray;
 }
-.genre-item-checked:hover {
+.item-checked:hover {
     background-color: hsl(0, 0%, 78%);
+}
+
+.flag-icon {
+    width: 20px;
+    margin: 0px 8px 0px 2px;
 }

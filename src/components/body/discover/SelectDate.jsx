@@ -6,7 +6,7 @@ function SelectDate() {
 
     const cd = new Date()
     const [dateTo, setDateTo] = useState(`${cd.getFullYear()}-${String(cd.getMonth()+1).padStart(2,"0")}-${String(cd.getDate()).padStart(2,"0")}`)
-    console.log(dateTo)
+
     return(
         <>
         <h4>Release Date</h4>
