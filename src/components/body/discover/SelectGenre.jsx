@@ -5,8 +5,7 @@ import DropdownCheckbox from "./DropdownSelect.jsx";
 function SelectGenre({setParamGenres}) {
 
     const [genres, setGenres] = useState([])
-    const [isOpen, setIsOpen] = useState(false)
-
+    
     useEffect(() => {
         async function loadGenres() {
             const res = await fetch("https://getflicks-app.vercel.app/api/genres");

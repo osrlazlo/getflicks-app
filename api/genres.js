@@ -1,8 +1,7 @@
-async function handler(req, res) {
+import { setCORSHeaders } from "./utils/helpers.js"
 
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173")
-    res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS")
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type")
+async function handler(req, res) {
+    setCORSHeaders(res)
 
     if (req.method === "OPTIONS") {
         return res.status(200).end()

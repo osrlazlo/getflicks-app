@@ -1,16 +1,7 @@
 import DropdownSelect from "./DropdownSelect"
+import {sortOptions} from "./sortOptionsModule.js"
 
 function SelectSortBy({setParamSortBy}) {
-
-    const sortOptions = [
-        {sortCode: "original_title.asc", name: "Title (A-Z)"},
-        {sortCode: "original_title.desc", name: "Title (Z-A)"},
-        {sortCode: "popularity.desc", name: "Most Popular"},
-        {sortCode: "popularity.asc", name: "Least Popular"},
-        {sortCode: "vote_average.desc", name: "Highest Rating"},
-        {sortCode: "vote_average.asc", name: "Lowest Rating"}
-    ]
-
    return(<DropdownSelect list={sortOptions} listType="sort-by" multiple={false} setParam = {setParamSortBy}/>)
 }
 

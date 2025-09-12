@@ -16,7 +16,7 @@ function SelectCountry({setParamCountries}) {
 
     countries.sort((a,b) => a.name.localeCompare(b.name))
 
-    return(<DropdownCheckbox list={countries} listType="countries" multiple={true} setParam={setParamCountries}/>)
+    return(<DropdownCheckbox list={countries} listType="countries" multiple={false} setParam={setParamCountries}/>)
 }
 
 export default SelectCountry

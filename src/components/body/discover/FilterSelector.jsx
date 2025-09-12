@@ -27,11 +27,19 @@ function FilterSelector() {
     
     return(
         <div className="filter-selector">
-            <button id="discover-button" onClick={filterMovies}>Recommend!</button>
+            <button id="discover-button" 
+
+            onClick={() => filterMovies({rate:rateParam, 
+                                   dateFrom:dateFromParam, 
+                                   dateTo:dateToParam, 
+                                   sortBy:sortByParam, 
+                                   genres:genresParam, 
+                                   countries:countriesParam})}>Recommend!</button>
+
             <OpenDropdownContext.Provider value={{openDropdown, toggleOpenDropdown}}>
                 <SelectSortBy setParamSortBy={setParamSortBy}/>
                 <SelectGenre setParamGenres={setParamGenres}/>
-                <SelectRating setRateParam={setParamRate}/>
+                <SelectRating setParamRate={setParamRate}/>
                 <SelectDate setParamDateFrom={setParamDateFrom} setParamDateTo={setParamDateTo}/>
                 <SelectCountry setParamCountries={setParamCountries}/>
             </OpenDropdownContext.Provider>

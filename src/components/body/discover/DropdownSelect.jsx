@@ -36,6 +36,7 @@ function DropdownSelect(props) {
                     break;
                 case "countries":
                     list = props.list.map(i => i = {id:i.id, name:i.name, isChecked:false, flag:i.flag})
+                    list.unshift({id:0, name:"Select a Country", isChecked:true, flag:null })
                     break;
                 case "sort-by":
                     list = props.list.map(i => i = {id:i.sortCode, name:i.name, isChecked:false})
@@ -104,9 +105,11 @@ function DropdownSelect(props) {
         <>
             <div className="button-select" ref={buttonRef}
                  onClick={(e) => {e.stopPropagation(); toggleDropdown()}}>
+                {props.listType === "countries" && itemList.length > 0 ? 
+                    (itemList[checkedIndex].id === 0 ? null:<img className="flag-icon" src={itemList[checkedIndex].flag}/>) : null}
                 {isMultiple ? 
                     `${listName} (${countChecked()})` : 
-                    ((itemList && itemList.length > 0) ? itemList[checkedIndex].name : "")}
+                    ((itemList && itemList.length > 0) ? (itemList[checkedIndex].name) : "")}
                 {isOpen ? <FaChevronUp className="icon"/> : <FaChevronDown className="icon"/> } 
             </div>
 

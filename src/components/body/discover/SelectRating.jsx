@@ -1,8 +1,9 @@
 import { useState } from "react"
+import { defMinRate } from "../../../../api/movieList"
 
 function SelectRating({setParamRate}) {
 
-    const [rating, setRating] = useState(7.0)
+    const [rating, setRating] = useState(defMinRate)
 
     function updtLabel(value) {
         setRating(r => value)
