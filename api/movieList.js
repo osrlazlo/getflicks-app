@@ -16,7 +16,7 @@ export async function filterMovies(params) {
     const dateTo = params.dateTo ? params.dateTo: new Date().getFullYear()+1
     const genres = params.genres ? params.genres.filter(g => g.isChecked) : ""
     const country = params.countries ? params.countries.filter(c => c.isChecked)[0] : ""
-    const sortBy = params.sortBy ? params.sortBy.filter(s => s.isChecked)[0] : sortOptions[0]
+    const sortBy = params.sortBy ? params.sortBy.filter(s => s.isChecked)[0].sortCode : sortOptions[0].sortCode
     
     if (genres) genres.unshift({paramStr: parametersToString(genres)})
 
