@@ -24,12 +24,12 @@ async function handler(req, res) {
                     movie?include_adult=false&include_video=false&language=en-US&page=1
                     ${filterParams.dateFrom ? "&primary_release_date.gte="+filterParams.dateFrom+"-01-01" : ""}
                     ${filterParams.dateTo ? "&primary_release_date.lte="+filterParams.dateTo+"-01-01" : ""}
-                    &sort_by=${filterParams.sortBy}
+                    &sort_by=${filterParams.sortBy.sortCode}
                     &vote_average.gte=${filterParams.rate}
                     ${filterParams.genre.length ? "&with_genres="+filterParams:""}
                     ${filterParams.country ? "&with_origin_country="+filterParams.countries.id:""}`
         
-        console.log(url)
+        console.log("URL:"+url)
         
         const response = await fetch(url, options)
 
