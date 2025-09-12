@@ -1,5 +1,4 @@
 import { sortOptions } from "../src/components/body/discover/sortOptionsModule.js"
-import { setCORSHeaders} from "./utils/helpers.js"
 
 let movieList = []
 let filterParams = ""

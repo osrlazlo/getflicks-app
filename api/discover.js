@@ -1,7 +1,11 @@
-export default async function handleSearch(req, res) {
+import { setCORSHeaders} from "./utils/helpers.js"
+
+async function handler(req, res) {
     setCORSHeaders(res)
 
-    if (req.method === "OPTIONS") return res.status(200).end()
+    if (req.method === "OPTIONS") {
+        return res.status(200).end()
+    }
 
     const filterParams = req.body 
 
@@ -38,3 +42,5 @@ export default async function handleSearch(req, res) {
         res.status(500).json({error: "Failed to fetch movies"})
     }
 }
+
+export default handler
