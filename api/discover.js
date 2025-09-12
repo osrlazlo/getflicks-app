@@ -26,7 +26,7 @@ async function handler(req, res) {
                     ${filterParams.dateTo ? "&primary_release_date.lte="+filterParams.dateTo+"-01-01" : ""}
                     &sort_by=${filterParams.sortBy}
                     &vote_average.gte=${filterParams.rate}
-                    ${filterParams.genre.length ? "&with_genres="+filterParams:""}
+                    ${filterParams.genre && filterParams.genres.length ? "&with_genres="+filterParams:""}
                     ${filterParams.country ? "&with_origin_country="+filterParams.countries.id:""}`
         
         console.log("URL:"+url)
