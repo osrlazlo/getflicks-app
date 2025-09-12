@@ -36,11 +36,15 @@ async function handler(req, res) {
         if (!response.ok) {
             throw new Error(`TMDB error: ${response.status}`)
         }
+
+        const data = await response.json()
+        res.status(200).json(data)
     }
     catch (error) {
         console.error("API /searchMovies failed",error)
         res.status(500).json({error: "Failed to fetch movies"})
     }
+
 }
 
 export default handler
