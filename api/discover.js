@@ -1,12 +1,11 @@
 export default async function handleSearch(req, res) {
-    
     setCORSHeaders(res)
-   
-    const filterParams = req.body 
-
-    if (!filterParams) return res.status(500).json({error: "Failed to fetch movies"}) 
 
     if (req.method === "OPTIONS") return res.status(200).end()
+
+    const filterParams = req.body 
+
+    if (!filterParams) return res.status(400).json({error: "Filter parameters missing"}) 
 
     const options = {
         method: "GET",
