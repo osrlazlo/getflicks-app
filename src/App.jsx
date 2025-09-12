@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import './App.css'
 
 import Header from './components/header/Header.jsx'
-import SideMenu from './components/side_menu/SideMenu.jsx'
 import Footer from './components/footer/Footer.jsx'
-import BodyManager from './components/body/BodyManager.jsx'
+import DiscoverPage from './components/body/DiscoverPage.jsx'
 
 function App() {
 
@@ -15,8 +13,7 @@ function App() {
           <Header/>
         </header>
         <div className="main-content">
-          <SideMenu/>
-          <BodyManager/>
+          <DiscoverPage/>
         </div>
         <footer>
           <Footer/>

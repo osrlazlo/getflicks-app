@@ -1,10 +1,9 @@
 import { sortOptions } from "../src/components/body/discover/sortOptionsModule.js"
 
-let movieList = []
 let filterParams = ""
-let apiParams = ""
 
 export const defMinRate = 7
+export const defMinVoteCount = 100
 
 export function searchMovies(params) {
     
@@ -12,6 +11,7 @@ export function searchMovies(params) {
 
 export async function filterMovies(params) {
     const rate = params.rate ? params.rate:defMinRate
+    const voteCount = params.voteCount ? params.voteCount:defMinVoteCount
     const dateFrom = params.dateFrom ? params.dateFrom: ""
     const dateTo = params.dateTo ? params.dateTo: new Date().getFullYear()+1
     const genres = params.genres ? params.genres.filter(g => g.isChecked) : ""
@@ -20,7 +20,8 @@ export async function filterMovies(params) {
     
     if (genres) genres.unshift({paramStr: parametersToString(genres)})
 
-    filterParams = {rate:rate, 
+    filterParams = {rate:rate,
+                 voteCount:voteCount, 
                  dateFrom:dateFrom, 
                  dateTo:dateTo, 
                  sortBy:sortBy, 
@@ -36,8 +37,8 @@ export async function filterMovies(params) {
     
     if (!response.ok) throw new Error("API /discover.js failed")
     const data = await response.json() 
-    console.log(data)
-    return data 
+    console.log(data.results)
+    return(data.results)
 }
 
 function parametersToString(list) {
