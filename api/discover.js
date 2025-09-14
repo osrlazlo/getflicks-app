@@ -27,8 +27,8 @@ async function handler(req, res) {
                     `${filterParams.dateTo ? "&primary_release_date.lte="+filterParams.dateTo+"-01-01" : ""}`+
                     `&sort_by=${filterParams.sortBy}`+
                     `&vote_average.gte=${filterParams.rate}`+`&vote_count.gte=${filterParams.voteCount}`+
-                    `${filterParams.genre && filterParams.genres.length ? "&with_genres="+filterParams:""}`+
-                    `${filterParams.country ? "&with_origin_country="+filterParams.countries.id:""}`
+                    `${filterParams.genres ? "&with_genres="+filterParams.genres:""}`+
+                    `${filterParams.country ? "&with_origin_country="+filterParams.country:""}`
         
         console.log("URL:"+url)
         

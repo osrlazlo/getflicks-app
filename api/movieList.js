@@ -27,8 +27,8 @@ export async function filterMovies(params) {
                  dateFrom:dateFrom, 
                  dateTo:dateTo, 
                  sortBy:sortBy, 
-                 genres:genres, 
-                 countries:country.id === 0 ? "":country}  
+                 genres:genres[0], 
+                 country:country.id === 0 ? "":country.id}  
 
       const response = await fetch("https://getflicks-app.vercel.app/api/discover", 
         {method: "POST",
