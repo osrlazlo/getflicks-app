@@ -1,4 +1,4 @@
-import { sortOptions } from "../src/components/body/discover/sortOptionsModule.js"
+import { sortOptions } from "../src/components/body/discover/constants.js"
 
 let filterParams = ""
 
@@ -10,6 +10,7 @@ export function searchMovies(params) {
 }
 
 export async function filterMovies(params) {
+    const page = params.page ? params.page:1
     const rate = params.rate ? params.rate:defMinRate
     const voteCount = params.voteCount ? params.voteCount:defMinVoteCount
     const dateFrom = params.dateFrom ? params.dateFrom: ""
@@ -20,7 +21,8 @@ export async function filterMovies(params) {
     
     if (genres) genres.unshift({paramStr: parametersToString(genres)})
 
-    filterParams = {rate:rate,
+    filterParams = {page:page,
+                 rate:rate,
                  voteCount:voteCount, 
                  dateFrom:dateFrom, 
                  dateTo:dateTo, 
@@ -28,16 +30,15 @@ export async function filterMovies(params) {
                  genres:genres, 
                  countries:country.id === 0 ? "":country}  
 
-    console.log(filterParams)
-    const response = await fetch("https://getflicks-app.vercel.app/api/discover", 
+      const response = await fetch("https://getflicks-app.vercel.app/api/discover", 
         {method: "POST",
          headers: {"Content-Type": "application/json"},
          body: JSON.stringify(filterParams)
         })
     
     if (!response.ok) throw new Error("API /discover.js failed")
-    const data = await response.json() 
-    console.log(data.results)
+    const data = await response.json()
+    console.log(data)
     return(data.results)
 }
 
@@ -47,7 +48,6 @@ function parametersToString(list) {
     const pipe = "%7C"
     let parametersStr = ""
     list.forEach(e => {parametersStr += e.id+pipe})
-    console.log(parametersStr)
     return parametersStr
 }
 

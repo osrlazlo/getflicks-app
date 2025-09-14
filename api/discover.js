@@ -21,7 +21,8 @@ async function handler(req, res) {
     try {
 
         const url = `https://api.themoviedb.org/3/discover/`+
-                    `movie?include_adult=false&include_video=false&language=en-US&page=1`+
+                    `movie?include_adult=false&include_video=false&language=en-US`+
+                    `&page=${filterParams.page ? filterParams.page:1}`+
                     `${filterParams.dateFrom ? "&primary_release_date.gte="+filterParams.dateFrom+"-01-01" : ""}`+
                     `${filterParams.dateTo ? "&primary_release_date.lte="+filterParams.dateTo+"-01-01" : ""}`+
                     `&sort_by=${filterParams.sortBy}`+

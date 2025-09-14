@@ -4,7 +4,7 @@ import DropdownCheckbox from "./DropdownSelect.jsx"
 function SelectCountry({setParamCountries}) {
 
     const [countries, setCountries] = useState([])
-
+    
     useEffect(() => {
         async function loadCountries() {
             const res = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,cca2")

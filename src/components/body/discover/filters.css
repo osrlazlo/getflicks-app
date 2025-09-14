@@ -8,7 +8,7 @@ h4, h5 {
     margin: 15px 0px 0px 0px;
 }
 
-input {
+input[type="range"], input[type="number"] {
     margin: 15px 0px 0px 10px;
 }
 
@@ -31,7 +31,7 @@ label {
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
-    width: 175px;
+    width: 130px;
     padding: 3px;
     margin: 15px 0px 5px 0px;
     display: flex;
@@ -61,7 +61,7 @@ label {
     min-width: fit-content;
     padding:3px;
     margin-top: 0px;
-    height: fit-content;
+    height: 50vh;
     max-height: 40vh;
     overflow: scroll;
     box-shadow: 2px 2px 5px lightgray;
@@ -103,7 +103,15 @@ label {
     background-color: hsl(193, 99%, 50%);
 }
 
-.item, .item-checked {
+.popular-items {
+    border: 1px dashed blue;
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+}
+
+.item, .item-checked, .popular-item, .popular-item-checked{
     border: 1px solid black;
     border-radius: 5px;
     padding: 3px;
@@ -115,18 +123,25 @@ label {
     display: flex;
     align-items: center;
 }
-.item:hover {
+
+.popular-item, .popular-item-checked {
+    width: 40px;
+    height: 20px;
+}
+
+
+.item:hover, .popular-item:hover {
     background-color: hsl(0, 0%, 90%);
 }
 
-.item:active {
+.item:active, .popular-item:active {
     background-color: hsl(0, 0%, 80%);
 }
 
-.item-checked {
+.item-checked, .popular-item-checked {
     background-color: lightgray;
 }
-.item-checked:hover {
+.item-checked:hover, .popular-item-checked:hover {
     background-color: hsl(0, 0%, 78%);
 }
 

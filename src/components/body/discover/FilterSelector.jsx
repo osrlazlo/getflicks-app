@@ -10,15 +10,7 @@ import { FilteredMoviesContext } from "../DiscoverPage"
 
 import "./filters.css"
 
-export const OpenDropdownContext = createContext()
-
 function FilterSelector() {
-
-    //keep track of which dropdown is open
-    const [openDropdown, setOpenDropdown] = useState(null)
-    function toggleOpenDropdown(dropdown) {
-        setOpenDropdown(o => openDropdown === dropdown? null:dropdown)
-    }
 
     const [rateParam, setParamRate] = useState()
     const [voteCountParam, setParamVoteCount] = useState()
@@ -44,14 +36,14 @@ function FilterSelector() {
                                    genres:genresParam, 
                                    countries:countriesParam}))}>Recommend!</button>
 
-            <OpenDropdownContext.Provider value={{openDropdown, toggleOpenDropdown}}>
+            
                 <SelectSortBy setParamSortBy={setParamSortBy}/>
                 <SelectGenre setParamGenres={setParamGenres}/>
                 <SelectRating setParamRate={setParamRate}/>
                 <SelectVoteCount setParamVoteCount={setParamVoteCount}/>
                 <SelectDate setParamDateFrom={setParamDateFrom} setParamDateTo={setParamDateTo}/>
                 <SelectCountry setParamCountries={setParamCountries}/>
-            </OpenDropdownContext.Provider>
+            
         </div>
     )
 }

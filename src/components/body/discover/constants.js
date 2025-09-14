@@ -11,3 +11,13 @@ export const sortOptions = [
         {sortCode: "original_title.asc", name: "Title (A-Z)"},
         {sortCode: "original_title.desc", name: "Title (Z-A)"}
     ]
+
+async function loadGenres() {
+    console.log("load genres called")
+    const res = await fetch("https://getflicks-app.vercel.app/api/genres");
+    const data = await res.json();
+    const genreList = data.genres.map(g => g = {id:g.id, name:g.name, isChecked:false})
+    return genreList
+}
+
+export const genres = await loadGenres()

@@ -4,5 +4,8 @@
     align-items: center;
 }
 .page {
-    width: 80vw;
+    width: 85vw;
+}
+.current-page-disply {
+    width: 100%;
 }

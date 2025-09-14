@@ -12,7 +12,7 @@ function App() {
         <header>
           <Header/>
         </header>
-        <div className="main-content">
+        <div className="current-page-display">
           <DiscoverPage/>
         </div>
         <footer>

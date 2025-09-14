@@ -3,6 +3,8 @@ import MovieCard from "./MovieCard.jsx"
 import "./body.css"
 
 import { FilteredMoviesContext } from "./DiscoverPage.jsx"
+import { defMinRate, defMinVoteCount, filterMovies } from "../../../api/movieList.js"
+import { sortOptions } from "./discover/constants.js"
 
 
 function MovieList() {
@@ -11,9 +13,12 @@ function MovieList() {
                         {id:"2", title:"title2", desc:"desc2", srcPoster:"link2", rate:"10"}
     ]
 
-    const {filteredMovies} = useContext(FilteredMoviesContext)
-   
-    console.log({filtered:filteredMovies})
+    const {filteredMovies, sendResults} = useContext(FilteredMoviesContext)
+    const defaultParam = {page:"", rate:"", voteCount:"", dateFrom:"", dateTo:"", sortBy:"", genres:"", countries:""}
+    
+    useEffect(() => {
+        sendResults(filterMovies(defaultParam))
+    }, [])
     
     return(
         
@@ -26,10 +31,13 @@ function MovieList() {
             {filteredMovies? filteredMovies.map(movie => (
                 <li key={movie.id}>
                     <MovieCard 
-                        title={movie.original_title} 
+                        id={movie.id}
+                        title={movie.title} 
                         desc={movie.overview}
                         srcPoster={movie.poster_path}
-                        rate={movie.vote_average}/>
+                        rate={movie.vote_average}
+                        voteCount={movie.vote_count}
+                        genreIds = {movie.genre_ids}/>
                 </li>
             )):<h4>Select filters and click recommend for result!"</h4>}
         </div>
