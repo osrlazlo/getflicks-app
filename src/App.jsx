@@ -5,7 +5,7 @@ import Footer from './components/footer/Footer.jsx'
 import DiscoverPage from './components/body/DiscoverPage.jsx'
 import { homeLabel, latestLabel, discoverLabel, aboutLabel } from './components/side_menu/Navigator.jsx'
 import ProgressPage from './ProgressPage.jsx'
-import clapperBoardIcon from "./assets/clapperBoard.svg"
+import clapperBoardIcon from './assets/clapperboard.svg'
 
 export const ActiveDisplayContext = createContext()
 
