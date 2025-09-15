@@ -9,3 +9,30 @@
 .current-page-disply {
     width: 100%;
 }
+
+.header-container, .footer-container {
+    border: 1px dashed purple;
+    display: flex;
+    padding: 5px;
+    height: 40px;
+    align-items: center;
+    gap: 10px;
+}
+
+#logo {
+    height: 25px;
+}
+
+.logo-container {
+    width: fit-content;
+}
+
+.contact-info {
+    width: 100%;
+    border: 1px dashed red;
+    display: flex;
+    justify-content: center;
+}
+.contact-icon {
+    font-size: 50px;
+}

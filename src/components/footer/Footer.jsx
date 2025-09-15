@@ -1,8 +1,9 @@
 import logo_blue_short from "../../assets/blue_short.svg"
-import "./footer.css"
+import { FaGithubSquare, FaLinkedin } from "react-icons/fa"
 
 function Footer() {
     return(
+        <>
         <div className="footer-container">
             <p>&copy; {new Date().getFullYear()} getflicks - All data sourced from &nbsp;</p>
         <div className="logo-container">
@@ -16,6 +17,11 @@ function Footer() {
                 </a>
         </div>
         </div>
+        <div className="contact-info">
+            <a href="https://github.com/osrlazlo" target="blank"><FaGithubSquare className="contact-icon"/></a>
+            <a href="https://www.linkedin.com/in/abdoul-kone-a23a94353/" target="blank"><FaLinkedin className="contact-icon"/></a>
+        </div>
+        </>
     )
 }
 

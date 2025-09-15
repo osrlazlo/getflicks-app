@@ -18,7 +18,7 @@
 }
 
 .movie-poster {
-    width: 80%;
+    width: 100%;
     height: auto;
     margin-top: 10px;
 }
@@ -35,6 +35,10 @@
     overflow:scroll;
 }
 
+.card-date {
+    margin: -10px 0px 10px 0px;
+    color: rgb(71, 71, 71);
+}
 .rating {
     border: 1px dotted red;
     height: min-content;

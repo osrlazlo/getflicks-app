@@ -16,6 +16,7 @@ function SelectDate({setParamDateFrom, setParamDateTo}) {
                 setParamDateFrom(d => e.target.value > (nextYear-1) ? nextYear-1:e.target.value)
                 if (dateTo <= e.target.value)
                     setDateTo(d => Number(e.target.value)+1)
+                    setParamDateTo(d => Number(e.target.value)+1)
             }}
             onBeforeInput={(e) => {if (e.target.value.length > 3) e.preventDefault()}}></input>
         </div>
@@ -27,6 +28,7 @@ function SelectDate({setParamDateFrom, setParamDateTo}) {
                 setParamDateTo(d => e.target.value > (nextYear) ? nextYear:e.target.value)
                 if (e.target.value && dateFrom >= e.target.value)
                     setDateFrom(d => e.target.value-1)
+                    setParamDateFrom(d => e.target.value-1)
             }}
             onBeforeInput={(e) => {if (e.target.value.length > 3) e.preventDefault()}}></input>
         </div>

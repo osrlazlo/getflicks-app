@@ -1,4 +1,3 @@
-import "./header.css"
 import logo_blue_short from "../../assets/blue_short.svg"
 
 function Header() {
@@ -8,7 +7,7 @@ function Header() {
             <p>&nbsp;powered by&nbsp;</p>
             <div className="logo-container">
                 <a href="https://www.themoviedb.org/" target="blank">
-                <img id="header-logo" src={logo_blue_short} alt="TMDB logo blue_long_1"></img>
+                <img id="logo" src={logo_blue_short} alt="TMDB logo blue_long_1"></img>
                 </a>
             </div>
             <div className="logo-container">

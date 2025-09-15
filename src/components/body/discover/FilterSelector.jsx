@@ -1,4 +1,4 @@
-import { useState, useRef, createContext, useContext } from "react"
+import { useState, useRef, createContext, useContext, useEffect } from "react"
 import SelectCountry from "./SelectCountry"
 import SelectDate from "./SelectDate"
 import SelectGenre from "./SelectGenre"
@@ -6,12 +6,12 @@ import SelectRating from "./SelectRating"
 import SelectSortBy from "./SelectSortBy"
 import SelectVoteCount from "./SelectVoteCount"
 import { filterMovies } from "../../../../api/movieList"
-import { FilteredMoviesContext } from "../DiscoverPage"
+import { ActivePageContext, ParametersContext } from "../DiscoverPage"
 
 import "./filters.css"
 
 function FilterSelector() {
-
+ 
     const [rateParam, setParamRate] = useState()
     const [voteCountParam, setParamVoteCount] = useState()
     const [dateFromParam, setParamDateFrom] = useState()
@@ -19,22 +19,22 @@ function FilterSelector() {
     const [sortByParam, setParamSortBy] = useState()
     const [genresParam, setParamGenres] = useState()
     const [countriesParam, setParamCountries] = useState()
-    const page = useRef(1)
 
-    const {sendResults} = useContext(FilteredMoviesContext)
-    
+    const {setParameters} = useContext(ParametersContext)
+    const {toggleActivePage} = useContext(ActivePageContext)
+     
     return(
         <div className="filter-selector">
             <button id="discover-button" 
-
-            onClick={() => sendResults(filterMovies({page:page.current,
+            onClick={() => {setParameters(p => p = {page:1,
                                    rate:rateParam,
                                    voteCount:voteCountParam, 
                                    dateFrom:dateFromParam, 
                                    dateTo:dateToParam, 
                                    sortBy:sortByParam, 
                                    genres:genresParam, 
-                                   countries:countriesParam}))}>Recommend!</button>
+                                   countries:countriesParam})
+                                   toggleActivePage(1)}} >Recommend!</button>
 
             
                 <SelectSortBy setParamSortBy={setParamSortBy}/>

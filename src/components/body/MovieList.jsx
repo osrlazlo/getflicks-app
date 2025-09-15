@@ -2,45 +2,89 @@ import { useContext, useEffect, useState } from "react"
 import MovieCard from "./MovieCard.jsx"
 import "./body.css"
 
-import { FilteredMoviesContext } from "./DiscoverPage.jsx"
-import { defMinRate, defMinVoteCount, filterMovies } from "../../../api/movieList.js"
-import { sortOptions } from "./discover/constants.js"
+import { FilteredMoviesContext, ActivePageContext, ParametersContext} from "./DiscoverPage.jsx"
+import PageButton from "./PageButton.jsx"
+import { BiChevronsLeft, BiChevronsRight, BiChevronLeft, BiChevronRight } from "react-icons/bi"
 
 
 function MovieList() {
 
-    const movieList = [{id:"1", title:"title", desc:"desc", srcPoster:"https://image.tmdb.org/t/p/w1280/ombsmhYUqR4qqOLOxAyr5V8hbyv.jpg", rate:"100"},
-                        {id:"2", title:"title2", desc:"desc2", srcPoster:"link2", rate:"10"}
-    ]
+    const {filteredMovies} = useContext(FilteredMoviesContext)
+    const {activePage, toggleActivePage} = useContext(ActivePageContext)
+    const {setParameters} = useContext(ParametersContext)
+    const [pages, setPages] = useState([])
 
-    const {filteredMovies, sendResults} = useContext(FilteredMoviesContext)
-    const defaultParam = {page:"", rate:"", voteCount:"", dateFrom:"", dateTo:"", sortBy:"", genres:"", countries:""}
-    
     useEffect(() => {
-        sendResults(filterMovies(defaultParam))
-    }, [])
+        const totalPages = filteredMovies.total_pages
+        let numPages = []
+        if (activePage >= 3)
+            for (let i=1; i<=totalPages; i++) {
+                if (i >= activePage-2 && i <= activePage+2) {
+                    if (numPages.push(i) === 5) break   
+                }        
+            }
+        else numPages = [1,2,3,4,5]
+        console.log(numPages)
+        setPages(p => numPages)
+    },[activePage])
+
+    function nextPage() {
+        if (activePage >= filteredMovies.total_pages) return
+        changePage(activePage+1)
+    }
+
+    function prevPage() {
+        if (activePage <= 1) return
+        changePage(activePage-1)
+    }
+
+    function firstPage() {
+        if (activePage === 1) return
+          changePage(1)
+    }
+
+    function lastPage() {
+        if (activePage === filteredMovies.total_pages) return
+        changePage(filteredMovies.total_pages)
+    }
+
+    function changePage(page) {
+        toggleActivePage(page)
+        setParameters(p => p = {...p, page:(page)})
+    }
     
     return(
         
-        <div className="dicover-container">
-                
-        <div className="discover-header-results">
-            <h3>{} result(s) found</h3>
-        </div>
-        <div className="discover-movie-list">
-            {filteredMovies? filteredMovies.map(movie => (
-                <li key={movie.id}>
-                    <MovieCard 
-                        id={movie.id}
-                        title={movie.title} 
-                        desc={movie.overview}
-                        srcPoster={movie.poster_path}
-                        rate={movie.vote_average}
-                        voteCount={movie.vote_count}
-                        genreIds = {movie.genre_ids}/>
-                </li>
-            )):<h4>Select filters and click recommend for result!"</h4>}
-        </div>
+        <div className="dicover-container">  
+            <div className="discover-header-results">
+                <h3>{} result(s) found</h3>
+            </div>
+
+            <div className="discover-movie-list">
+                {filteredMovies? filteredMovies.results.map(movie => (
+                    <li key={movie.id}>
+                        <MovieCard 
+                            releaseDate={movie.release_date}
+                            id={movie.id}
+                            title={movie.title} 
+                            desc={movie.overview}
+                            srcPoster={movie.poster_path}
+                            rate={movie.vote_average}
+                            voteCount={movie.vote_count}
+                            genreIds = {movie.genre_ids}/>
+                    </li>
+                )):<h4>Select filters and click recommend for result!"</h4>}
+            </div>
+            
+            <div className="movie-page-nav">
+                <BiChevronsLeft className="nav-icon" onClick={()=>firstPage()}/>
+                <BiChevronLeft className="nav-icon" onClick={()=>prevPage()}/>
+                {pages.map(p => (
+                    <div key={p}><PageButton page={p}/></div>
+                ))}
+                <BiChevronRight className="nav-icon" onClick={()=>nextPage()}/>
+                <BiChevronsRight className="nav-icon"onClick={()=>lastPage()}/>
+            </div>
         </div>
     )
 }

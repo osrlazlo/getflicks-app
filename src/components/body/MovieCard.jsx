@@ -4,7 +4,7 @@ import "./movie_card.css"
 import "./dropdown.css"
 import {createPopper, offset, viewport} from "@popperjs/core"
 import {OpenDropdownContext} from "./DiscoverPage.jsx"
-import { genres } from "./discover/constants.js";
+import { genres, months } from "./discover/constants.js";
 
 function MoreInfo({desc, id, rate, voteCount, genreIds}) {
     const {openDropdown, toggleOpenDropdown} = useContext(OpenDropdownContext)
@@ -13,8 +13,7 @@ function MoreInfo({desc, id, rate, voteCount, genreIds}) {
     const buttonRef = useRef()
     const dropdownRef = useRef()
     const genreList = genres.filter(g => genreIds.includes(g.id))
-    console.log(`${id}IDS:${genreIds}`)
-    console.log({genreList})
+
     useEffect(() => {
         
         function handler(e) {
@@ -47,41 +46,48 @@ function MoreInfo({desc, id, rate, voteCount, genreIds}) {
     }
 
     return(
-        <div className="dropdown">
-            <div className="button-dropdown" ref={buttonRef}
-                onClick={(e) => {e.stopPropagation(); toggleDropdown()}}>
-                {isOpen ? <FaMinusSquare className="icon"/> : <FaPlusSquare className="icon"/> } 
-            </div>
-
-            {isOpen ?
-            <div className={"dropdown-box"+(isOpen? "-open":"")} ref={dropdownRef}>
-                 <h4>{`ID: ${id}`}</h4>
-                <div>{genreList.map(g => (
-                    <button className="desc-genres">{g.name}</button>
-                 ))} </div>
-                    <p>{desc}<br/><br/>
-                    <b>{`Avg: ${rate} - ${voteCount} votes`}</b></p> 
-            </div> : null}
-        </div>
+        <>                
+        {isOpen ? 
+            <FaMinusSquare className="icon" ref={buttonRef}
+            onClick={(e) => {e.stopPropagation(); toggleDropdown()}}/> : 
+            <FaPlusSquare className="icon" ref={buttonRef}
+            onClick={(e) => {e.stopPropagation(); toggleDropdown()}}/> } 
+        
+        {isOpen ?
+        <div className={"dropdown-box"+(isOpen? "-open":"")} ref={dropdownRef}>
+                <h4>{`ID: ${id}`}</h4>
+            <div>{genreList.map(g => (
+                <button key={g.id} className="desc-genres">{g.name}</button>
+                ))} </div>
+                <p>{desc}<br/><br/>
+                <b>{`Avg: ${rate} - ${voteCount} votes`}</b></p> 
+        </div> : null}
+        </>
     )
 }
 
 function MovieCard(props) {
     const imagePath = "https://image.tmdb.org/t/p/w500/"
+    const date = new Date(props.releaseDate)
+    const cardDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
     return(
         <div className="movie-card">
-           
+            <div className="image">
+                <MoreInfo 
+                    desc={props.desc} 
+                    id={props.id} 
+                    rate={props.rate} 
+                    voteCount={props.voteCount}
+                    genreIds={props.genreIds}/>
+
                 <img src={imagePath+props.srcPoster} 
                 className="movie-poster" 
                 alt={props.title+"-movie-poster"}></img>
-               
+            </div>      
             <h3 className="title">{props.title}</h3>
+            <h5 className="card-date">{cardDate}</h5>
             <h4 className="rating">{props.rate}</h4>
-            <MoreInfo desc={props.desc} 
-                        id={props.id} 
-                        rate={props.rate} 
-                        voteCount={props.voteCount}
-                        genreIds={props.genreIds}/>
+
         </div>
     )
 }

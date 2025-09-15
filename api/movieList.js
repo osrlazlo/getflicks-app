@@ -19,7 +19,8 @@ export async function filterMovies(params) {
     const country = params.countries ? params.countries.filter(c => c.isChecked)[0] : ""
     const sortBy = params.sortBy ? params.sortBy.filter(s => s.isChecked)[0].id : sortOptions[0].sortCode
     
-    if (genres) genres.unshift({paramStr: parametersToString(genres)})
+    if (genres) genres.unshift(parametersToString(genres))
+        console.log(genres)
 
     filterParams = {page:page,
                  rate:rate,
@@ -39,7 +40,7 @@ export async function filterMovies(params) {
     if (!response.ok) throw new Error("API /discover.js failed")
     const data = await response.json()
     console.log(data)
-    return(data.results)
+    return(data)
 }
 
 function parametersToString(list) {
