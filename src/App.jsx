@@ -1,10 +1,19 @@
 import './App.css'
-
+import { createContext, useContext, useState } from 'react'
 import Header from './components/header/Header.jsx'
 import Footer from './components/footer/Footer.jsx'
 import DiscoverPage from './components/body/DiscoverPage.jsx'
+import { homeLabel, latestLabel, discoverLabel, aboutLabel } from './components/side_menu/Navigator.jsx'
+import ProgressPage from './ProgressPage.jsx'
+
+export const ActiveDisplayContext = createContext()
 
 function App() {
+
+  const [activeDisplay, setActiveDisplay] = useState(discoverLabel)
+  function toggleActiveDisplay(display) {
+    setActiveDisplay(p => display)
+  }
 
   return (
     <div className='page-container'>
@@ -13,7 +22,10 @@ function App() {
           <Header/>
         </header>
         <div className="current-page-display">
-          <DiscoverPage/>
+          <ActiveDisplayContext.Provider value={{activeDisplay, toggleActiveDisplay}}>
+            {activeDisplay === discoverLabel? <DiscoverPage/>:
+            <ProgressPage/>}
+          </ActiveDisplayContext.Provider>
         </div>
         <footer>
           <Footer/>

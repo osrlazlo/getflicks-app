@@ -5,13 +5,11 @@
 }
 
 .dicover-container {
-  border: 1px dashed darkblue;
   width: 100%;
   min-height: fit-content;
 }
 
 .discover-filters {
-  border: 1px dashed darkblue;
   max-width: 100%;
   margin: 5px;
 }
@@ -25,7 +23,6 @@
 }
 
 .discover-movie-list {
-  border: 1px dashed orange;
   border-radius: 15px;
   margin: 5px;
   padding: 5px;
@@ -50,31 +47,32 @@
 
 .page-button, .page-button-active {
   margin: 5px;
-  width: 30px;
+  width: 40px;
   height: 30px;
   border: none;
   border-radius: 15px;
+  font-size: 15px;
 }
 
 .page-button-active {
-  background-color: blue;
+  background-color: #01b4e4;
   color: white;
 }
 
-.page-button:hover, .page-button-active:hover {
+.page-button:hover {
   cursor: pointer;
 }
 
 .nav-icon {
-  font-size: 30px;
-  color: blue;
+  font-size: 40px;
+  color: #01b4e4;
 }
 
 .nav-icon:hover {
   cursor: pointer;
-  color: hsl(240, 100%, 70%);
+  color: hsl(193, 99%, 25%);
 }
 
 .nav-icon:active {
-  color: hsl(240, 100%, 30%);
+  color: hsl(193, 99%, 75%);
 }

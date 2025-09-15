@@ -1,7 +1,9 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import SideMenuDiscover from "../side_menu/SideMenuDiscover.jsx";
 import MovieList from "./MovieList.jsx";
 import { filterMovies } from "../../../api/movieList.js";
+import { ActiveDisplayContext } from "../../App.jsx";
+import { discoverLabel } from "../side_menu/Navigator.jsx";
 
 export const FilteredMoviesContext = createContext()
 export const OpenDropdownContext = createContext()
@@ -9,6 +11,11 @@ export const ActivePageContext = createContext()
 export const ParametersContext = createContext()
 
 function DiscoverPage() {
+
+    const {toggleActiveDisplay} = useContext(ActiveDisplayContext)
+    useEffect(() => {
+        toggleActiveDisplay(discoverLabel)
+    },[])
 
     //keep track of which dropdown is open
     const [openDropdown, setOpenDropdown] = useState(null)

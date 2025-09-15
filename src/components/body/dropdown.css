@@ -13,6 +13,10 @@
     color: orange;
 }
 
+.image .icon:hover {
+    color: hsl(39, 100%, 68%);
+}
+
 .button-dropdown:hover {
     filter: invert(0.3);
 }
@@ -28,11 +32,10 @@
     min-width: 100px;
     max-width: 250px;
     height: fit-content;
-    max-height: 250px;
+    max-height: 300px;
     padding:3px 10px 3px 10px;
     margin-top: 0px;
     overflow: scroll;
-    box-shadow: 2px 2px 5px lightgray;
     list-style: none;
     position: absolute;
     display: flex;
@@ -54,6 +57,12 @@
                 opacity 100ms ease-in-out;
     pointer-events: all;
     z-index: 1000;
+}
+
+.desc-genres-box {
+    display: flex;
+    justify-content: center;
+    width: 80%;
 }
 
 

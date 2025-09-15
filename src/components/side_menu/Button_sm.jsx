@@ -1,7 +1,16 @@
-function ButtonSideMenu(props) {
+import { useContext } from "react"
+import { ActiveDisplayContext } from "../../App"
+
+function ButtonSideMenu({label}) {
+
+    const {activeDisplay, toggleActiveDisplay} = useContext(ActiveDisplayContext)
+
+    const isActive = activeDisplay === label? true:false
+
     return(
         <>
-        <button className="button-side-menu">{props.label}</button>
+        <button className={"button-side-menu"+(isActive? "-active":"")}
+                onClick={() => toggleActiveDisplay(label)}>{label}</button>
         </>
     )
 }

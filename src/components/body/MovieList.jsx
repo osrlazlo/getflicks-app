@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import MovieCard from "./MovieCard.jsx"
 import "./body.css"
 
@@ -13,6 +13,7 @@ function MovieList() {
     const {activePage, toggleActivePage} = useContext(ActivePageContext)
     const {setParameters} = useContext(ParametersContext)
     const [pages, setPages] = useState([])
+    const movieListRef = useRef()
 
     useEffect(() => {
         const totalPages = filteredMovies.total_pages
@@ -26,6 +27,7 @@ function MovieList() {
         else numPages = [1,2,3,4,5]
         console.log(numPages)
         setPages(p => numPages)
+        if (movieListRef.current) movieListRef.current.scrollTo(0,0)
     },[activePage])
 
     function nextPage() {
@@ -57,10 +59,10 @@ function MovieList() {
         
         <div className="dicover-container">  
             <div className="discover-header-results">
-                <h3>{} result(s) found</h3>
+                <h3>{filteredMovies.total_results} result(s) found</h3>
             </div>
 
-            <div className="discover-movie-list">
+            <div className="discover-movie-list" ref={movieListRef}>
                 {filteredMovies? filteredMovies.results.map(movie => (
                     <li key={movie.id}>
                         <MovieCard 

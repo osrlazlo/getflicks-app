@@ -2,22 +2,45 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+button {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
 .page {
-    width: 85vw;
+    width: 95vw;
+    border-right: 2px solid #0d253f;
 }
 .current-page-disply {
     width: 100%;
 }
 
-.header-container, .footer-container {
-    border: 1px dashed purple;
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-container, .footer-container, .contact-info {
+    background-color: #0d253f;
+    color: white;
     display: flex;
-    padding: 5px;
-    height: 40px;
+    padding: 10px;
+    height: 50px;
+    width: 100%;
     align-items: center;
     gap: 10px;
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;   
+    box-sizing: border-box; 
 }
+
+.footer-container {
+    justify-content: center;
+}
+
 
 #logo {
     height: 25px;
@@ -28,8 +51,7 @@
 }
 
 .contact-info {
-    width: 100%;
-    border: 1px dashed red;
+    height: 50px;
     display: flex;
     justify-content: center;
 }

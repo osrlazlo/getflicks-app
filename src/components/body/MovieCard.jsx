@@ -56,7 +56,7 @@ function MoreInfo({desc, id, rate, voteCount, genreIds}) {
         {isOpen ?
         <div className={"dropdown-box"+(isOpen? "-open":"")} ref={dropdownRef}>
                 <h4>{`ID: ${id}`}</h4>
-            <div>{genreList.map(g => (
+            <div className="desc-genres-box">{genreList.map(g => (
                 <button key={g.id} className="desc-genres">{g.name}</button>
                 ))} </div>
                 <p>{desc}<br/><br/>
