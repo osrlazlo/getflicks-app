@@ -18,6 +18,7 @@ function Footer() {
         </div>
         </div>
         <div className="contact-info">
+            <p>Developped by Abdoul Kone (osrlazlo)</p>
             <a href="https://github.com/osrlazlo" target="blank"><FaGithubSquare className="contact-icon"/></a>
             <a href="https://www.linkedin.com/in/abdoul-kone-a23a94353/" target="blank"><FaLinkedin className="contact-icon"/></a>
         </div>

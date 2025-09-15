@@ -5,6 +5,7 @@ import Footer from './components/footer/Footer.jsx'
 import DiscoverPage from './components/body/DiscoverPage.jsx'
 import { homeLabel, latestLabel, discoverLabel, aboutLabel } from './components/side_menu/Navigator.jsx'
 import ProgressPage from './ProgressPage.jsx'
+import clapperBoardIcon from "./assets/clapperBoard.svg"
 
 export const ActiveDisplayContext = createContext()
 
@@ -16,6 +17,11 @@ function App() {
   }
 
   return (
+    <>
+    <head>
+      <title>{`${activeDisplay} | getflicks`}</title>
+      <link rel="icon" type="image/svg+xml" href={clapperBoardIcon}/>
+    </head>
     <div className='page-container'>
       <div className='page'>
         <header>
@@ -32,6 +38,7 @@ function App() {
         </footer>
       </div>
     </div>
+    </>
   )
 }
 
