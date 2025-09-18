@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import MovieCard from "./MovieCard.jsx"
-import "./body.css"
+import MovieCard from "../MovieCard.jsx"
+import "../body.css"
 
 import { FilteredMoviesContext, ActivePageContext, ParametersContext} from "./DiscoverPage.jsx"
 import PageButton from "./PageButton.jsx"

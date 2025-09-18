@@ -1,12 +1,12 @@
 import { useState, useRef, createContext, useContext, useEffect } from "react"
-import SelectCountry from "./SelectCountry"
-import SelectDate from "./SelectDate"
-import SelectGenre from "./SelectGenre"
-import SelectRating from "./SelectRating"
-import SelectSortBy from "./SelectSortBy"
-import SelectVoteCount from "./SelectVoteCount"
-import { filterMovies } from "../../../../api/movieList"
-import { ActivePageContext, ParametersContext } from "../DiscoverPage"
+import SelectCountry from "./SelectCountry.jsx"
+import SelectDate from "./SelectDate.jsx"
+import SelectGenre from "./SelectGenre.jsx"
+import SelectRating from "./SelectRating.jsx"
+import SelectSortBy from "./SelectSortBy.jsx"
+import SelectVoteCount from "./SelectVoteCount.jsx"
+import { filterMovies } from "../../../../api/filterMovies"
+import { ActivePageContext, ParametersContext } from "./DiscoverPage"
 
 import "./filters.css"
 
@@ -29,8 +29,8 @@ function FilterSelector() {
             onClick={() => {setParameters(p => p = {page:1,
                                    rate:rateParam,
                                    voteCount:voteCountParam, 
-                                   dateFrom:dateFromParam, 
-                                   dateTo:dateToParam, 
+                                   dateFrom:dateFromParam+"-01-01", 
+                                   dateTo:dateToParam+"-12-31", 
                                    sortBy:sortByParam, 
                                    genres:genresParam, 
                                    countries:countriesParam})

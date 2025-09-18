@@ -1,9 +1,9 @@
-import { sortOptions } from "../src/components/body/discover/constants.js"
+import { sortOptions } from "../src/components/pages/discover/constants.js"
 
 let filterParams = ""
 
-export const defMinRate = 7
-export const defMinVoteCount = 100
+export const defMinRate = 0
+export const defMinVoteCount = 0
 
 export function searchMovies(params) {
     
@@ -14,10 +14,11 @@ export async function filterMovies(params) {
     const rate = params.rate ? params.rate:defMinRate
     const voteCount = params.voteCount ? params.voteCount:defMinVoteCount
     const dateFrom = params.dateFrom ? params.dateFrom: ""
-    const dateTo = params.dateTo ? params.dateTo: new Date().getFullYear()+1
+    const today = new Date()
+    const dateTo = params.dateTo ? params.dateTo: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
     const genres = params.genres ? params.genres.filter(g => g.isChecked) : ""
     const country = params.countries ? params.countries.filter(c => c.isChecked)[0] : ""
-    const sortBy = params.sortBy ? params.sortBy.filter(s => s.isChecked)[0].id : sortOptions[0].sortCode
+    const sortBy = params.sortBy ? params.sortBy.filter(s => s.isChecked)[0].id : sortOptions[0].id
     
     if (genres) genres.unshift(parametersToString(genres))
         console.log(genres)
@@ -29,7 +30,8 @@ export async function filterMovies(params) {
                  dateTo:dateTo, 
                  sortBy:sortBy, 
                  genres:genres[0], 
-                 country:country.id === 0 ? "":country.id}  
+                 country:country.id === 0 ? "":country.id}
+    console.log(filterParams)
 
       const response = await fetch("https://getflicks-app.vercel.app/api/discover", 
         {method: "POST",

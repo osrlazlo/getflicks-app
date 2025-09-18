@@ -1,4 +1,4 @@
-import FilterSelector from "../body/discover/FilterSelector"
+import FilterSelector from "../pages/discover/FilterSelector"
 import ButtonSideMenu from "./Button_sm"
 import Navigator from "./Navigator"
 import "./side_menu.css"

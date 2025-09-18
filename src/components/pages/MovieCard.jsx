@@ -1,10 +1,9 @@
 import { useRef, useState, useEffect, useContext } from "react";
 import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
 import "./movie_card.css"
-import "./dropdown.css"
 import {createPopper, offset, viewport} from "@popperjs/core"
-import {OpenDropdownContext} from "./DiscoverPage.jsx"
-import { genres, months } from "./discover/constants.js";
+import { OpenDropdownContext } from "../../App";
+import { genres, months } from "./discover/constants";
 
 function MoreInfo({desc, id, rate, voteCount, genreIds}) {
     const {openDropdown, toggleOpenDropdown} = useContext(OpenDropdownContext)

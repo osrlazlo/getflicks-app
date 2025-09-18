@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { defMinVoteCount } from "../../../../api/movieList"
+import { defMinVoteCount } from "../../../../api/filterMovies"
 
 function SelectVoteCount({setParamVoteCount}) {
 
