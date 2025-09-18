@@ -29,8 +29,8 @@ function FilterSelector() {
             onClick={() => {setParameters(p => p = {page:1,
                                    rate:rateParam,
                                    voteCount:voteCountParam, 
-                                   dateFrom:dateFromParam+"-01-01", 
-                                   dateTo:dateToParam+"-12-31", 
+                                   dateFrom:dateFromParam? dateFromParam+"-01-01":"", 
+                                   dateTo:dateToParam? dateToParam+"-12-31":"", 
                                    sortBy:sortByParam, 
                                    genres:genresParam, 
                                    countries:countriesParam})
