@@ -28,7 +28,7 @@ export interface Genre {
 
 async function loadGenres() {
     console.log("load genres called")
-    const res = await fetch("https://getflicks-app.vercel.app/api/genres");
+    const res = await fetch("/api/genres");
     const data = await res.json();
     const genreList:Genre[] = data.genres.map((g:Genre) => g = {id:g.id, name:g.name, isChecked:false})
     return genreList

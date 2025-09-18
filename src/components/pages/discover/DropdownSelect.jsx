@@ -39,7 +39,7 @@ function DropdownSelect(props) {
                     break;
                 case "countries":
                     list = props.list.map(i => i = {id:i.id, name:i.name, isChecked:false, flag:i.flag})
-                    const popCountryList = list.filter(c => (c.id === "US" | c.id === "CA" | c.id === "KR" | c.id === "ES"))
+                    const popCountryList = list.filter(c => (c.id === "US" || c.id === "CA" || c.id === "KR" || c.id === "ES"))
                     setPopList(p => popCountryList)
                     list.unshift({id:0, name:"Select a Country", isChecked:true, flag:null })
                     break;
