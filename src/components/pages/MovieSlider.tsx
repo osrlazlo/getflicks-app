@@ -81,7 +81,7 @@ export default function MovieSlider({label}: MovieSliderProps) {
                             voteCount={movie.vote_count}
                             genreIds = {movie.genre_ids}/>
                     </li>
-                )):<h4>Select filters and click recommend for result!"</h4>}
+                )):null}
             </div>
         </div>
     )

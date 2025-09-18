@@ -33,7 +33,13 @@ export async function filterMovies(params) {
                  country:country.id === 0 ? "":country.id}
     console.log(filterParams)
 
-      const response = await fetch("/api/discover", 
+      /*const response = await fetch("/api/discover", 
+        {method: "POST",
+         headers: {"Content-Type": "application/json"},
+         body: JSON.stringify(filterParams)
+        })*/
+
+      const response = await fetch("https://getflicks-app-git-other-pages-osrlazlos-projects.vercel.app/api/discover", 
         {method: "POST",
          headers: {"Content-Type": "application/json"},
          body: JSON.stringify(filterParams)

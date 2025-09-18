@@ -1,7 +1,6 @@
 import SideMenu from "../../side_menu/SideMenu"
-import LatestMovies from "./LatestMovies"
-import PopularMovies from "./PopularMovies"
 import MovieSlider from "../MovieSlider"
+
 
 
 import { homeLabel } from "../../side_menu/Navigator"
