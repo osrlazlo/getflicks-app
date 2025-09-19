@@ -29,7 +29,7 @@ export interface Genre {
 }
 
 async function loadGenres() {
-    const res = await fetch(`${API_BASE}/genres`)
+    const res = await fetch(`/api/genres`)
     const data = await res.json();
     const genreList:Genre[] = data.genres.map((g:Genre) => g = {id:g.id, name:g.name, isChecked:false})
     return genreList

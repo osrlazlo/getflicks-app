@@ -33,7 +33,7 @@ export async function filterMovies(params) {
                  genres:genres[0], 
                  country:country.id === 0 ? "":country.id}
 
-      const response = await fetch(`${API_BASE}/discover`, 
+      const response = await fetch(`/api/discover`, 
         {method: "POST",
          headers: {"Content-Type": "application/json"},
          body: JSON.stringify(filterParams)
