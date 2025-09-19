@@ -1,6 +1,6 @@
 import { setCORSHeaders} from "./utils/helpers.js"
 
-async function handler(req, res) {
+export default async function handler(req, res) {
     setCORSHeaders(res)
 
     if (req.method === "OPTIONS") {
@@ -48,4 +48,4 @@ async function handler(req, res) {
 
 }
 
-export default handler
+

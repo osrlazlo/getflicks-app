@@ -4,6 +4,7 @@ import "./movie_card.css"
 import {createPopper, offset, viewport} from "@popperjs/core"
 import { OpenDropdownContext } from "../../App";
 import { genres, months } from "./discover/constants";
+import posterPlaceholder from "../../assets/poster-placeholder.png"
 
 function MoreInfo({desc, id, rate, voteCount, genreIds}) {
     const {openDropdown, toggleOpenDropdown} = useContext(OpenDropdownContext)
@@ -79,7 +80,7 @@ function MovieCard(props) {
                     voteCount={props.voteCount}
                     genreIds={props.genreIds}/>
 
-                <img src={imagePath+props.srcPoster} 
+                <img src={props.srcPoster===null? posterPlaceholder:imagePath+props.srcPoster} 
                 className="movie-poster" 
                 alt={props.title+"-movie-poster"}></img>
             </div>      

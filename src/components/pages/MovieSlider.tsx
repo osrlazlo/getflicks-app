@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
 import MovieCard from "./MovieCard"
-import SeeMoreButton from "./home/SeeMoreButton"
 import { sortOptions } from "./discover/constants"
 import { filterMovies } from "../../../api/filterMovies"
 import type { SortOption, Genre, Country } from "./discover/constants"
 import { labelLatest, labelPopular, labelTopRated } from "./home/HomePage"
-
+import "./movie_slider.css"
 
 interface Movie {
     id:number
@@ -33,6 +32,14 @@ interface Filters {
     sortBy?:SortOption[]
     genres?:Genre[]
     country?:Country[]
+}
+
+function SeeMoreButton() {
+    return(
+        <>
+        <button>See More</button>
+        </>
+    )
 }
 
 export default function MovieSlider({label}: MovieSliderProps) {
@@ -67,7 +74,9 @@ export default function MovieSlider({label}: MovieSliderProps) {
     return(
         
         <div className="slider-container">  
-        <h3>{label} Movies</h3> <SeeMoreButton/>
+        <div className="slider-header">
+            <h3>{label} Movies</h3> <SeeMoreButton/>
+        </div>
             <div className="slider-movie-list">
                 {movieList? movieList.results.slice(0,10).map(movie => (
                     <li key={movie.id}>

@@ -7,33 +7,3 @@
     border-left: 2px solid #0d253f;
     border-right: 2px solid #0d253f;
 }
-
-.button-side-menu, .button-side-menu-active {
-    width: 100%;
-    height: 40px;
-    border-top: none;
-    border-bottom: 2px solid black;
-    border-left: none;
-    border-right: none;
-    background-color: white;
-    cursor: pointer;
-}
-
-.button-side-menu-active {
-    background-color: #0d253f;
-    color: white;
-}
-
-.button-side-menu:hover {
-    background-color: hsl(0, 0%, 80%);
-}
-.button-side-menu:active {
-    background-color: hsl(0, 0%, 95%);
-}
-
-.button-side-menu-active:hover {
-    background-color: hsl(211, 66%, 25%);
-}
-.button-side-menu-active:active {
-    background-color: hsl(212, 66%, 35%);
-}

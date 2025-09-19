@@ -1,0 +1,26 @@
+.main-content {
+    box-sizing: border-box;
+}
+
+.home-page {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 10px 2px 15px 0px;
+    overflow: hidden;
+}
+
+.home-page .movie-card {
+    width: 10vw;
+    min-width: 125px;
+    max-width: 200px;
+}
+.home-page .movie-card h3, .home-page .movie-card .icon {
+    font-size: medium;
+}
+
+.home-page .movie-card h4, .home-page .movie-card h5 {
+    font-size: small;
+}
+

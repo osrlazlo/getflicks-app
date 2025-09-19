@@ -12,7 +12,6 @@ button {
 
 .page {
     width: 95vw;
-    border-right: 2px solid #0d253f;
 }
 .current-page-disply {
     width: 100%;
@@ -28,7 +27,7 @@ a {
     color: white;
     display: flex;
     padding: 10px;
-    height: 50px;
+    height: 60px;
     width: 100%;
     align-items: center;
     gap: 10px;
@@ -43,11 +42,13 @@ a {
 
 
 #logo {
-    height: 25px;
+    max-height: 25px;
+    width: 15vw;
 }
 
 .logo-container {
     width: fit-content;
+    padding-left: 0;
 }
 
 .contact-info {

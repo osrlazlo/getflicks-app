@@ -39,7 +39,7 @@ export async function filterMovies(params) {
          body: JSON.stringify(filterParams)
         })*/
 
-      const response = await fetch("https://getflicks-app-git-other-pages-osrlazlos-projects.vercel.app/api/discover", 
+      const response = await fetch("https://getflicks-app.vercel.app/api/discover", 
         {method: "POST",
          headers: {"Content-Type": "application/json"},
          body: JSON.stringify(filterParams)
