@@ -1,0 +1,49 @@
+.page-nav {
+    height: 100%;
+    margin: 0px;
+}
+
+.page-nav .side-menu {
+    width: 100%;
+    border-left: 2px solid #0d253f;
+    border-right: 2px solid #0d253f;
+}
+
+.navigator {
+    display: flex;
+    height: 100%;
+    gap: 10px;
+}
+
+.button-nav, .button-nav-active {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 25px;
+    background-color: #0d253f;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.button-nav-active {
+    background-color: #01b4e4;
+}
+
+.button-nav:hover {
+    background-color: hsl(211, 66%, 25%);
+}
+.button-nav:active {
+    background-color: hsl(212, 66%, 35%);
+}
+
+.button-nav-active:hover {
+    background-color: hsl(211, 66%, 25%);
+}
+.button-nav-active:active {
+    background-color: hsl(212, 66%, 35%);
+}

@@ -1,7 +1,59 @@
+.movie-card {
+    width: 25vw;
+    min-width: 200px;
+    max-width: 250px;
+    height: fit-content;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+.movie-card:hover {
+    background-color: hsl(208, 100%, 94%);
+}
+
+.movie-poster {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.title {
+    height: min-content;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.description {
+    margin-bottom: -5px;
+    height: 100px;
+    overflow:scroll;
+}
+
+.card-date {
+    margin: -10px 0px 10px 0px;
+    color: rgb(71, 71, 71);
+}
+.rating {
+    height: min-content;
+    margin: -5px 0px 5px 0px;
+}
+
+.desc-genres {
+    background-color:rgb(129, 189, 206);
+    border: none;
+    margin: 2px;
+    border-radius: 5px;
+    padding: 4px;
+}
+
 .image {
     position: relative;
     width: 80%;
-    height: fit-content;
+    height: 100%;
 }
 
 .image .icon {
@@ -64,5 +116,6 @@
     justify-content: center;
     width: 80%;
 }
+
 
 

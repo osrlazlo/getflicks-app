@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useContext } from "react";
 import {FaChevronDown} from "react-icons/fa"
 import {FaChevronUp} from "react-icons/fa"
 
-import { OpenDropdownContext } from "../DiscoverPage.jsx";
+import { OpenDropdownContext } from "../../../App";
 import {createPopper, offset, viewport} from "@popperjs/core"
 
 
@@ -39,12 +39,12 @@ function DropdownSelect(props) {
                     break;
                 case "countries":
                     list = props.list.map(i => i = {id:i.id, name:i.name, isChecked:false, flag:i.flag})
-                    const popCountryList = list.filter(c => (c.id === "US" | c.id === "CA" | c.id === "KR" | c.id === "ES"))
+                    const popCountryList = list.filter(c => (c.id === "US" || c.id === "CA" || c.id === "KR" || c.id === "ES"))
                     setPopList(p => popCountryList)
                     list.unshift({id:0, name:"Select a Country", isChecked:true, flag:null })
                     break;
                 case "sort-by":
-                    list = props.list.map(i => i = {id:i.sortCode, name:i.name, isChecked:false})
+                    list = props.list.map(i => i = {id:i.id, name:i.name, isChecked:false})
                     list[checkedIndex] = {...list[checkedIndex], isChecked:true}
                     break;
             }

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { defMinRate } from "../../../../api/movieList"
+import { defMinRate } from "../../../../api/filterMovies"
 
 function SelectRating({setParamRate}) {
 
