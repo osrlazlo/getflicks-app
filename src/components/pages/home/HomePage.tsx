@@ -18,9 +18,9 @@ export default function HomePage(label:string) {
     return(
             <div className="main-content">
                 <div className="home-page">
-                    <MovieSlider label={labelTopRated}/>
                     <MovieSlider label={labelLatest}/>
                     <MovieSlider label={labelPopular}/>
+                    <MovieSlider label={labelTopRated}/>                    
                 </div>
             </div>
     )

@@ -8,7 +8,7 @@ function ButtonSideMenu({label}:{label:string}) {
     const isActive = activeDisplay === label? true:false
 
     return(
-        <button className={"button-side-menu"+(isActive? "-active":"")}
+        <button className={"button-nav"+(isActive? "-active":"")}
                 onClick={() => toggleActiveDisplay(label)}>{label}</button>
 
     )
