@@ -1,5 +1,4 @@
 import { sortOptions } from "../src/components/pages/discover/constants.js"
-import { API_BASE } from "./utils/helpers.js"
 
 let filterParams = ""
 
