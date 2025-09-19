@@ -1,4 +1,5 @@
 import { sortOptions } from "../src/components/pages/discover/constants.js"
+import { API_BASE } from "./utils/helpers.js"
 
 let filterParams = ""
 
@@ -31,15 +32,8 @@ export async function filterMovies(params) {
                  sortBy:sortBy, 
                  genres:genres[0], 
                  country:country.id === 0 ? "":country.id}
-    console.log(filterParams)
 
-      /*const response = await fetch("/api/discover", 
-        {method: "POST",
-         headers: {"Content-Type": "application/json"},
-         body: JSON.stringify(filterParams)
-        })*/
-
-      const response = await fetch("https://getflicks-app.vercel.app/api/discover", 
+      const response = await fetch(`${API_BASE}/discover`, 
         {method: "POST",
          headers: {"Content-Type": "application/json"},
          body: JSON.stringify(filterParams)
