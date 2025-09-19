@@ -32,12 +32,13 @@ export async function filterMovies(params) {
                  sortBy:sortBy, 
                  genres:genres[0], 
                  country:country.id === 0 ? "":country.id}
-
-      const response = await fetch(`/api/discover`, 
-        {method: "POST",
-         headers: {"Content-Type": "application/json"},
-         body: JSON.stringify(filterParams)
-        })
+      
+    const API_BASE = import.meta.env.VITE_API_BASE
+    const response = await fetch(`${API_BASE}/discover`, 
+      {method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(filterParams)
+      })
     
     if (!response.ok) throw new Error("API /discover.js failed")
     const data = await response.json()
