@@ -1,36 +1,48 @@
 import { sortOptions } from "../src/components/pages/discover/constants.js"
+import { defMinRate, defMinVoteCount } from "../src/components/pages/discover/constants.js"
+import type { SortOption, Genre, Country } from "../src/components/pages/discover/constants.js"
 
-let filterParams = ""
+export interface Filters {
+    page?:number
+    rate?:number
+    voteCount?:number
+    dateFrom?:Date
+    dateTo?:Date
+    sortBy?:SortOption[]
+    genres?:Genre[]
+    countries?:Country[]
+}
 
-export const defMinRate = 0
-export const defMinVoteCount = 0
+interface Parameters {
 
-export function searchMovies(params) {
+}
+
+export function searchMovies(params:Filters) {
     
 }
 
-export async function filterMovies(params) {
+export async function filterMovies(params:Filters) {
     const page = params.page ? params.page:1
     const rate = params.rate ? params.rate:defMinRate
     const voteCount = params.voteCount ? params.voteCount:defMinVoteCount
     const dateFrom = params.dateFrom ? params.dateFrom: ""
     const today = new Date()
-    const dateTo = params.dateTo ? params.dateTo: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
+    const dateTo = params.dateTo ? params.dateTo : `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
     const genres = params.genres ? params.genres.filter(g => g.isChecked) : ""
     const country = params.countries ? params.countries.filter(c => c.isChecked)[0] : ""
-    const sortBy = params.sortBy ? params.sortBy.filter(s => s.isChecked)[0].id : sortOptions[0].id
+    const sortBy = params.sortBy ? (params.sortBy.find(s => s.isChecked)?.id ?? sortOptions[0]): sortOptions[0]!.id
     
-    if (genres) genres.unshift(parametersToString(genres))
-        console.log(genres)
+   
+    let genreStr = genres ? parametersToString(genres) : ""
 
-    filterParams = {page:page,
+    const filterParams = {page:page,
                  rate:rate,
                  voteCount:voteCount, 
                  dateFrom:dateFrom, 
                  dateTo:dateTo, 
                  sortBy:sortBy, 
-                 genres:genres[0], 
-                 country:country.id === 0 ? "":country.id}
+                 genres:genreStr, 
+                 country: country ? (country.id === 0 ? "":country.id):""}
       
     const API_BASE = import.meta.env.VITE_API_BASE
     const response = await fetch(`${API_BASE}/discover`, 
@@ -45,7 +57,7 @@ export async function filterMovies(params) {
     return(data)
 }
 
-function parametersToString(list) {
+function parametersToString(list:Genre[]) {
     if (!list) return
     //const blank = "%20"
     const pipe = "%7C"

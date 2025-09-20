@@ -5,6 +5,7 @@ import "../body.css"
 import { FilteredMoviesContext, ActivePageContext, ParametersContext} from "./DiscoverPage.jsx"
 import PageButton from "./PageButton.jsx"
 import { BiChevronsLeft, BiChevronsRight, BiChevronLeft, BiChevronRight } from "react-icons/bi"
+import { maxPage } from "./constants.js"
 
 
 function MovieList() {
@@ -15,8 +16,10 @@ function MovieList() {
     const [pages, setPages] = useState([])
     const movieListRef = useRef()
 
+    //Set page navigator to browse through results - Cap at 500 pages bc API limit
+    //Displays 5 buttons
     useEffect(() => {
-        const totalPages = filteredMovies.total_pages
+        const totalPages = filteredMovies.total_pages > maxPage ? maxPage:filteredMovies.totalPages
         let numPages = []
         if (activePage >= 3)
             for (let i=1; i<=totalPages; i++) {
@@ -42,7 +45,7 @@ function MovieList() {
 
     function firstPage() {
         if (activePage === 1) return
-          changePage(1)
+        changePage(1)
     }
 
     function lastPage() {
@@ -50,10 +53,11 @@ function MovieList() {
         changePage(filteredMovies.total_pages)
     }
 
-    function changePage(page) {
-        toggleActivePage(page)
-        setParameters(p => p = {...p, page:(page)})
-    }
+    //helper fct for page change
+        function changePage(page) {
+            toggleActivePage(page)
+            setParameters(p => p = {...p, page:(page)})
+        }
     
     return(
         

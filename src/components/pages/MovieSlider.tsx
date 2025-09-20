@@ -2,44 +2,16 @@ import { useEffect, useState } from "react"
 import MovieCard from "./MovieCard"
 import { sortOptions } from "./discover/constants"
 import { filterMovies } from "../../../api/filterMovies"
-import type { SortOption, Genre, Country } from "./discover/constants"
+import type { Filters } from "../../../api/filterMovies"
+import type { Movie } from "./MovieCard"
 import { labelLatest, labelPopular, labelTopRated } from "./home/HomePage"
 import "./movie_slider.css"
 
-interface Movie {
-    id:number
-    title:string
-    overview:string
-    poster_path:string
-    vote_average:Number
-    vote_count:Number
-    genre_ids:Number[]
-    release_date:Date
-}
 interface MovieSliderProps {
     label:string
 }
 interface MoviesFetchRes {
     results:Movie[]
-}
-
-interface Filters {
-    page?:number
-    rate?:number
-    voteCount?:number
-    dateFrom?:Date
-    dateTo?:Date
-    sortBy?:SortOption[]
-    genres?:Genre[]
-    country?:Country[]
-}
-
-function SeeMoreButton() {
-    return(
-        <>
-        <button>See More</button>
-        </>
-    )
 }
 
 export default function MovieSlider({label}: MovieSliderProps) {
@@ -81,17 +53,25 @@ export default function MovieSlider({label}: MovieSliderProps) {
                 {movieList? movieList.results.slice(0,10).map(movie => (
                     <li key={movie.id}>
                         <MovieCard 
-                            releaseDate={movie.release_date}
+                            release_date={movie.release_date}
                             id={movie.id}
                             title={movie.title} 
-                            desc={movie.overview}
-                            srcPoster={movie.poster_path}
-                            rate={movie.vote_average}
-                            voteCount={movie.vote_count}
-                            genreIds = {movie.genre_ids}/>
+                            overview={movie.overview}
+                            poster_path={movie.poster_path}
+                            vote_average={movie.vote_average}
+                            vote_count={movie.vote_count}
+                            genre_ids = {movie.genre_ids}/>
                     </li>
                 )):null}
             </div>
         </div>
+    )
+}
+
+function SeeMoreButton() {
+    return(
+        <>
+        <button>More</button>
+        </>
     )
 }
