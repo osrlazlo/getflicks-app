@@ -5,7 +5,7 @@ import Footer from './components/footer/Footer'
 import DiscoverPage from './components/pages/discover/DiscoverPage'
 import { homeLabel, latestLabel, discoverLabel, aboutLabel } from './components/header/Navigator'
 import ProgressPage from './ProgressPage.jsx'
-import clapperBoardIcon from './assets/clapperboard.svg'
+import favicon from './assets/favicon.svg'
 import HomePage from './components/pages/home/HomePage'
 import Head from 'next/head'
 
@@ -29,7 +29,7 @@ function App() {
     <>
     <Head>
       <title>{`${activeDisplay} | getflicks`}</title>
-      <link rel="icon" type="image/svg+xml" href={clapperBoardIcon}/>
+      <link rel="icon" type="image/svg+xml" href={favicon}/>
     </Head>
     <OpenDropdownContext.Provider value={{openDropdown, toggleOpenDropdown}}>
     <ActiveDisplayContext.Provider value={{activeDisplay, toggleActiveDisplay}}>

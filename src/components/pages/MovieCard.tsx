@@ -33,7 +33,8 @@ export default function MovieCard(props:Movie) {
 
                 <img src={props.poster_path===null? posterPlaceholder:imagePath+props.poster_path} 
                 className="movie-poster" 
-                alt={props.title+"-movie-poster"}></img>
+                alt={props.title+"-movie-poster"}
+                onError={e => {(e.currentTarget as HTMLImageElement).src=posterPlaceholder}}></img>
             </div>      
             <h3 className="title">{props.title}</h3>
             <h5 className="card-date">{cardDate}</h5>
