@@ -18,8 +18,9 @@ function MovieList() {
 
     //Set page navigator to browse through results - Cap at 500 pages bc API limit
     //Displays 5 buttons
+    const totalPages = filteredMovies.total_pages > maxPage ? maxPage:filteredMovies.totalPages
     useEffect(() => {
-        const totalPages = filteredMovies.total_pages > maxPage ? maxPage:filteredMovies.totalPages
+        
         let numPages = []
         if (activePage >= 3)
             for (let i=1; i<=totalPages; i++) {
@@ -34,7 +35,7 @@ function MovieList() {
     },[activePage])
 
     function nextPage() {
-        if (activePage >= filteredMovies.total_pages) return
+        if (activePage >= totalPages) return
         changePage(activePage+1)
     }
 
@@ -49,8 +50,8 @@ function MovieList() {
     }
 
     function lastPage() {
-        if (activePage === filteredMovies.total_pages) return
-        changePage(filteredMovies.total_pages)
+        if (activePage === totalPages) return
+        changePage(totalPages)
     }
 
     //helper fct for page change
@@ -70,14 +71,14 @@ function MovieList() {
                 {filteredMovies? filteredMovies.results.map(movie => (
                     <li key={movie.id}>
                         <MovieCard 
-                            releaseDate={movie.release_date}
+                            release_date={movie.release_date}
                             id={movie.id}
                             title={movie.title} 
-                            desc={movie.overview}
-                            srcPoster={movie.poster_path}
-                            rate={movie.vote_average}
-                            voteCount={movie.vote_count}
-                            genreIds = {movie.genre_ids}/>
+                            overview={movie.overview}
+                            poster_path={movie.poster_path}
+                            vote_average={movie.vote_average}
+                            vote_count={movie.vote_count}
+                            genre_ids = {movie.genre_ids}/>
                     </li>
                 )):<h4>Select filters and click recommend for result!"</h4>}
             </div>

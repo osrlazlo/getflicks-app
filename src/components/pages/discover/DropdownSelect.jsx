@@ -44,6 +44,7 @@ function DropdownSelect(props) {
                     list.unshift({id:0, name:"Select a Country", isChecked:true, flag:null })
                     break;
                 case "sort-by":
+                    list = props.list
                     list[checkedIndex] = {...list[checkedIndex], isChecked:true}
                     break;
             }

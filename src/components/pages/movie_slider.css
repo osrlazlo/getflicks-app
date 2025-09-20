@@ -17,6 +17,8 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    margin-top: 15px;
+    border-bottom: 3px solid #0d253f;
 }
 
 .slider-header button {

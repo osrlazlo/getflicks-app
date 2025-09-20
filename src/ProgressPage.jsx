@@ -2,7 +2,7 @@
 export default function ProgressPage() {
     return(
         <>
-            <div className="main-content">
+            <div className="progress">
                 <p>This page is in progress</p>
             </div>
         </>

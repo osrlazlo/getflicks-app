@@ -10,7 +10,7 @@ function SelectDate({setParamDateFrom, setParamDateTo}) {
         <h4>Release Year</h4>
         <div className="date" id="date-from">
             <h5>From:</h5>
-            <input type="number" min="1900" max={nextYear-1} step="1" value={dateFrom} 
+            <input type="number" min="1874" max={nextYear-1} step="1" value={dateFrom} 
             onChange={e => {
                 setDateFrom(d => e.target.value > (nextYear-1) ? nextYear-1:e.target.value)
                 setParamDateFrom(d => e.target.value > (nextYear-1) ? nextYear-1:e.target.value)
