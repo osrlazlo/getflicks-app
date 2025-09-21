@@ -4,8 +4,9 @@ import { useEffect, useRef, useState, useContext } from "react";
 import {FaChevronDown} from "react-icons/fa"
 import {FaChevronUp} from "react-icons/fa"
 
-import { OpenDropdownContext } from "../../../App";
+import { OpenDropdownContext, NavOriginContext } from "../../../App";
 import {createPopper, offset, viewport} from "@popperjs/core"
+import { labelLatest, labelTopRated } from "../home/HomePage";
 
 
 function DropdownSelect(props) {
@@ -15,6 +16,7 @@ function DropdownSelect(props) {
     const dropdownRef = useRef()
     const buttonRef = useRef()
 
+    const {navOrigin} = useContext(NavOriginContext)
     const {openDropdown, toggleOpenDropdown} = useContext(OpenDropdownContext)
     const isOpen = openDropdown === props.listType ? true:false
 
@@ -45,7 +47,19 @@ function DropdownSelect(props) {
                     break;
                 case "sort-by":
                     list = props.list
-                    list[checkedIndex] = {...list[checkedIndex], isChecked:true}
+                    if (navOrigin === labelLatest) {
+                        props.list.forEach((e,i) =>{
+                          if (e.id === "primary_release_date.desc") {
+                            e.isChecked = true
+                            setCheckedIndex(i)
+                    }})}
+                    else if (navOrigin === labelTopRated) {
+                        props.list.forEach((e,i) =>{
+                          if (e.id === "vote_average.desc") {
+                            e.isChecked = true
+                            setCheckedIndex(i)
+                    }})}
+                    else list[checkedIndex] = {...list[checkedIndex], isChecked:true}
                     break;
             }
             setItemList(l => list)
@@ -91,7 +105,6 @@ function DropdownSelect(props) {
     }
 
     useEffect(() => {
-        
         function handler(e) {
             if (!isOpen) return
             if (!dropdownRef.current) return

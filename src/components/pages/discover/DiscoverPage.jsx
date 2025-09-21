@@ -2,9 +2,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 import SideMenuDiscover from "../../side_menu/SideMenuDiscover";
 import MovieList from "./DiscoverMovieList";
 import { filterMovies } from "../../../../api/filterMovies";
-import { ActiveDisplayContext } from "../../../App";
-import { discoverLabel } from "../../header/Navigator";
-
+import { ActiveDisplayContext, NavOriginContext } from "../../../App";
+import { discoverLabel, homeLabel } from "../../header/Navigator";
+import { labelLatest, labelPopular, labelTopRated } from "../home/HomePage";
+import { sortOptions } from "./constants";
 export const FilteredMoviesContext = createContext()
 export const ActivePageContext = createContext()
 export const ParametersContext = createContext()
@@ -16,23 +17,32 @@ function DiscoverPage() {
         toggleActiveDisplay(discoverLabel)
     },[])
 
+    const {navOrigin} = useContext(NavOriginContext)
+   
+
     const [filteredMovies, setFilteredMovies] = useState("")
     async function sendResults(results) {
         const data = await results
          setFilteredMovies(m => data)
-    }
-
-    const [parameters, setParameters] = useState({page:1, rate:"", voteCount:"", dateFrom:"", dateTo:"", sortBy:"", genres:"", countries:""})
+    } 
 
     const [activePage, setActivePage] = useState(1)
     function toggleActivePage(page) {
         console.log(`NEW-PAGE:${page}`)
         setActivePage(p => page)
     }
+    
+    const [parameters, setParameters] = useState(() => {
+    switch (navOrigin) {
+        case homeLabel:
+        case labelPopular: return {page:1, rate:"", voteCount:"", dateFrom:"", dateTo:"", sortBy:"", genres:"", countries:""}
+        case labelTopRated: return {sortBy: sortOptions.map(o => o = {...o, isChecked: o.id === "vote_average.desc" ? true:false}), voteCount:300}
+        case labelLatest: return {sortBy: sortOptions.map(o => o = {...o, isChecked: o.id === "primary_release_date.desc" ? true:false})}
+    }})
 
     useEffect(() => {
         console.log(parameters)
-        console.log(filteredMovies)
+        //console.log(filteredMovies)
         sendResults(filterMovies(parameters))
     },[parameters])
 

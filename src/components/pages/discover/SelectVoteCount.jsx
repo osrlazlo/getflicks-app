@@ -1,9 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { defMinVoteCount } from "./constants" 
+import { NavOriginContext } from "../../../App"
+import { labelTopRated } from "../home/HomePage"
 
 function SelectVoteCount({setParamVoteCount}) {
 
-    const [count, setCount] = useState(defMinVoteCount)
+    const {navOrigin} = useContext(NavOriginContext)
+    const [count, setCount] = useState(navOrigin === labelTopRated ? 300 : defMinVoteCount)
 
     function updtLabel(value) {
         setCount(c => value)

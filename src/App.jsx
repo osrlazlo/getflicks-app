@@ -1,16 +1,23 @@
-import './App.css'
 import { createContext, useContext, useState } from 'react'
+
+//VARS & FCTS
+import { homeLabel, latestLabel, discoverLabel, aboutLabel } from './components/header/Navigator'
+
+//COMPONENST
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import DiscoverPage from './components/pages/discover/DiscoverPage'
-import { homeLabel, latestLabel, discoverLabel, aboutLabel } from './components/header/Navigator'
 import ProgressPage from './ProgressPage.jsx'
 import favicon from './assets/favicon.svg'
 import HomePage from './components/pages/home/HomePage'
 import Head from 'next/head'
 
+//STYLES
+import './App.css'
+
 export const ActiveDisplayContext = createContext()
 export const OpenDropdownContext = createContext()
+export const NavOriginContext = createContext()
 
 function App() {
 
@@ -25,12 +32,18 @@ function App() {
     setActiveDisplay(p => display)
   }
 
+  const [navOrigin, setNavOrigin] = useState(homeLabel)
+   function toggleNavOrigin(origin) {
+    setNavOrigin(o => origin)
+  }
+
   return (
     <>
     <Head>
       <title>{`${activeDisplay} | getflicks`}</title>
       <link rel="icon" type="image/svg+xml" href={favicon}/>
     </Head>
+    <NavOriginContext.Provider value={{navOrigin, toggleNavOrigin}}>
     <OpenDropdownContext.Provider value={{openDropdown, toggleOpenDropdown}}>
     <ActiveDisplayContext.Provider value={{activeDisplay, toggleActiveDisplay}}>
       <div className='page-container'>
@@ -42,6 +55,7 @@ function App() {
             
               {activeDisplay === discoverLabel? <DiscoverPage/>:null}
               {activeDisplay === homeLabel? <HomePage/>:null}
+            
               {activeDisplay === aboutLabel? <ProgressPage/>:null}
               {activeDisplay === latestLabel? <ProgressPage/>:null}
 
@@ -53,6 +67,7 @@ function App() {
       </div>
     </ActiveDisplayContext.Provider>
     </OpenDropdownContext.Provider>
+    </NavOriginContext.Provider>
     </>
   )
 }

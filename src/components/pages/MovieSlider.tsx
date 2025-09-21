@@ -1,10 +1,23 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+
+//COMPONENTS
 import MovieCard from "./MovieCard"
+
+//VARS & FCTS
 import { sortOptions } from "./discover/constants"
-import { filterMovies } from "../../../api/filterMovies"
+import { filterMovies} from "../../../api/filterMovies"
+import { labelLatest, labelPopular, labelTopRated } from "./home/HomePage"
+import { discoverLabel } from "../header/Navigator"
+
+//TYPES
 import type { Filters } from "../../../api/filterMovies"
 import type { Movie } from "./MovieCard"
-import { labelLatest, labelPopular, labelTopRated } from "./home/HomePage"
+
+//CONTEXTS
+import { ActiveDisplayContext } from "../../App"
+import { NavOriginContext } from "../../App"
+
+//STYLES
 import "./movie_slider.css"
 
 interface MovieSliderProps {
@@ -47,7 +60,7 @@ export default function MovieSlider({label}: MovieSliderProps) {
         
         <div className="slider-container">  
         <div className="slider-header">
-            <h3>{label} Movies</h3> <SeeMoreButton/>
+            <h3>{label} Movies</h3> <SeeMoreButton label={label}/>
         </div>
             <div className="slider-movie-list">
                 {movieList? movieList.results.slice(0,10).map(movie => (
@@ -68,10 +81,18 @@ export default function MovieSlider({label}: MovieSliderProps) {
     )
 }
 
-function SeeMoreButton() {
+
+interface SeeMoreProps { label:string }
+
+function SeeMoreButton({label}:SeeMoreProps) {
+
+    const {toggleActiveDisplay} = useContext(ActiveDisplayContext)
+    const {toggleNavOrigin} = useContext(NavOriginContext)
     return(
         <>
-        <button>More</button>
+        <button onClick={()=> {
+            toggleActiveDisplay(discoverLabel),
+            toggleNavOrigin(label)}}>More</button>
         </>
     )
 }
