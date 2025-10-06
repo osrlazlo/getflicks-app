@@ -3,10 +3,11 @@ import { NavOriginContext } from "../../App"
 import "./navigator.css"
 import { useContext } from "react"
 
-export const homeLabel = "Home"
-export const latestLabel = "Latest"
-export const discoverLabel = "Discover"
-export const aboutLabel = "About"
+export const homeLabel = "home"
+export const latestLabel = "latest"
+export const discoverLabel = "discover"
+export const aboutLabel = "about"
+export const userIconLabel = "user"
 
 export default function Navigator() {
 

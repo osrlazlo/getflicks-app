@@ -1,3 +1,4 @@
+import UserIcon from "../user_features/UserIcon"
 import Navigator from "./Navigator"
 
 function Header() {
@@ -5,7 +6,10 @@ function Header() {
         <div className="header-container">
             <h2>getflicks</h2>
             <div className="page-nav">
-                <Navigator/>
+                <Navigator/> 
+            </div>
+            <div>
+                <UserIcon/>
             </div>
         </div>
     )

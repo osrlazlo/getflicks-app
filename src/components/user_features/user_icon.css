@@ -1,0 +1,53 @@
+.user-dropdown, .user-dropdown-active {
+    position: absolute;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 0 10px 10px 10px;
+    border-radius: 5px;
+    margin-top: 2px;
+    box-shadow: 3px 3px 5px rgba(128, 128, 128, 0.521);
+    z-index: 1000;
+}
+
+.arrow {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    rotate: 45deg;
+    left: 9px;
+    top: 9px;
+    margin-bottom: -6px;
+}
+
+.user-icon {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    font-size: 35px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.user-icon:hover {
+    border: 2px solid #00ccff;
+    color: #00ccff;
+}
+
+.user-option {
+    background-color: hsl(0, 0%, 100%);
+    cursor: pointer;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-option:hover {
+    background-color: hsl(0, 0%, 80%);
+}
+
+.link {
+    color: black;
+}

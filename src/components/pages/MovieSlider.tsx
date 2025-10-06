@@ -19,6 +19,7 @@ import { NavOriginContext } from "../../App"
 
 //STYLES
 import "./movie_slider.css"
+import { Link } from "react-router-dom"
 
 interface MovieSliderProps {
     label:string
@@ -89,10 +90,10 @@ function SeeMoreButton({label}:SeeMoreProps) {
     const {toggleActiveDisplay} = useContext(ActiveDisplayContext)
     const {toggleNavOrigin} = useContext(NavOriginContext)
     return(
-        <>
+        <Link to="/discover">
         <button onClick={()=> {
             toggleActiveDisplay(discoverLabel),
             toggleNavOrigin(label)}}>More</button>
-        </>
+        </Link>
     )
 }

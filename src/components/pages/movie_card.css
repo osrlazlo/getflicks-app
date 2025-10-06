@@ -58,46 +58,48 @@
 
 .image .icon {
     font-size: 25px;
-    position: absolute;
-    right: 4px;
-    top: 15px;
     cursor: pointer;
     color: orange;
+    position: absolute;
 }
 
 .image .icon:hover {
     color: hsl(39, 100%, 68%);
 }
 
-.button-dropdown:hover {
-    filter: invert(0.3);
-}
-.button-dropdown:active {
-    filter: invert(1);
+.button-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 98%;
+    position: absolute;
+    top: 8px;
 }
 
 .dropdown-box, .dropdown-box-open {
     border: 1px solid black;
     background-color: white;
     border-radius: 5px;
-    width: 40vw;
-    min-width: 100px;
+    width: 25vw;
     max-width: 250px;
+    min-width: 100px;
+    padding: 3px 10px 5px 10px;
+    margin-top: 50px;
     height: fit-content;
-    max-height: 300px;
-    padding:3px 10px 3px 10px;
-    margin-top: 0px;
-    overflow: scroll;
-    list-style: none;
+    max-height: 40vh;
+    overflow-y: scroll;
     position: absolute;
+    left: -2.5vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1000;
     opacity: 0;
     transform: translateY(-5%);
     transition: transform 150ms ease-in-out,
-                opacity 100ms ease-in-out;
+                opacity 100ms ease-in-out;   
+    box-sizing: border-box; 
+    z-index: 1000;
 }
 .dropdown-box {
     pointer-events: none;
