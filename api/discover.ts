@@ -1,6 +1,7 @@
 import { setCORSHeaders} from "./utils/helpers.js"
+import type { Request, Response } from "express"
 
-export default async function handler(req, res) {
+export default async function handler(req:Request, res:Response) {
     setCORSHeaders(res)
 
     if (req.method === "OPTIONS") {
