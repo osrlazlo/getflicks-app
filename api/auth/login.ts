@@ -1,7 +1,7 @@
 import supabase from "../utils/supabase"
 import bcryptjs  from "bcryptjs"
 import { validEmailRegex, validUsernameRegex } from "./signup"
-import jwt from "jsonwebtoken"
+//import jwt from "jsonwebtoken"
 
 interface LoginResponse {
     status?:number,
