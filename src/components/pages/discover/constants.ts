@@ -1,3 +1,5 @@
+import { API_BASE } from "../../../../api/utils/helpers"
+
 //SORT OPTIONS
 export interface SortOption {
     id:string
@@ -25,7 +27,6 @@ export interface Genre {
     isChecked?:boolean
 }
 
-const API_BASE = import.meta.env.VITE_API_BASE
 async function loadGenres() {
     const res = await fetch(`${API_BASE}/genres`)
     const data = await res.json();

@@ -11,7 +11,7 @@ export const userIconLabel = "user"
 
 export default function Navigator() {
 
-    const {toggleNavOrigin} = useContext(NavOriginContext)
+    const { toggleNavOrigin } = useContext(NavOriginContext)!
 
     return(
         <div className="navigator">

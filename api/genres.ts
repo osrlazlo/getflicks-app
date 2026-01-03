@@ -3,7 +3,7 @@ import type { Request, Response } from "express"
 
 export default async function handler(req:Request, res:Response) {
     setCORSHeaders(res)
-    console.log(res)
+    //console.log(res)
 
     if (req.method === "OPTIONS") {
         return res.status(200).end()

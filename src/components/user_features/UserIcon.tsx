@@ -48,7 +48,7 @@ function UserDropdown() {
         <>
             <div className={"user-dropdown"+(isActive? "-active":"")}>
                 <Link to="/login" className="link"><h4 className="user-option">Login</h4></Link>
-                <Link to="/sign-up" className="link"><h4 className="user-option">Create account</h4></Link>
+                <Link to="/signup" className="link"><h4 className="user-option">Create account</h4></Link>
             </div>
         </>
     )

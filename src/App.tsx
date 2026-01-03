@@ -44,7 +44,7 @@ const router = createBrowserRouter([
   {path:"/latest", element: <ProgressPage/>},
   {path:"/about", element: <ProgressPage/>},
   {path:"/login", element: <LoginPage/>},
-  {path:"/sign-up", element: <SignUpPage/>}
+  {path:"/signup", element: <SignUpPage/>}
 ]);
 
 export default function App() {
@@ -52,17 +52,17 @@ export default function App() {
   //keep track of which dropdown is open
   const [openDropdown, setOpenDropdown] = useState<string>("");
   function toggleOpenDropdown(dropdown:string) {
-      setOpenDropdown(o => openDropdown === dropdown? "":dropdown);
+      setOpenDropdown(openDropdown === dropdown? "":dropdown);
   };
 
   const [activeDisplay, setActiveDisplay] = useState<string>("");
   function toggleActiveDisplay(display:string) {
-    setActiveDisplay(p => display);
+    setActiveDisplay(display);
   };
 
   const [navOrigin, setNavOrigin] = useState("");
    function toggleNavOrigin(origin:string) {
-    setNavOrigin(o => origin);
+    setNavOrigin(origin);
   };
 
   return (
