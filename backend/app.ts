@@ -21,9 +21,9 @@ app.use("/api", loginRouter)
 app.use("/api", genresRouter)
 app.use("/api", discoverRouter)
 
-app.use(express.static(path.join(__dirname, "../dist")))
+app.use(express.static(path.join(__dirname, "../frontend/dist")))
 app.get("/{*any}", (_, res) => {
-    res.sendFile(path.join(__dirname, "../dist/index.html"))
+    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"))
 })
 
 export default app
