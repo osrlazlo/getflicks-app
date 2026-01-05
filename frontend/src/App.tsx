@@ -1,22 +1,18 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-//VARS & FCTS
-import { homeLabel, latestLabel, discoverLabel, aboutLabel } from './components/header/Navigator';
-
 //COMPONENST
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
-import DiscoverPage from './components/pages/discover/DiscoverPage';
+import DiscoverPage from './components/pages/discover/DiscoverPage.jsx';
 import ProgressPage from './ProgressPage.js';
 import favicon from './assets/favicon.svg';
-import HomePage from './components/pages/home/HomePage';
+import HomePage from './components/pages/home/HomePage.js';
 import Head from 'next/head';
-import LoginPage from './components/user_features/login/LoginPage';
+import LoginPage from './components/user_features/login/LoginPage.js';
 
 //STYLES
 import './App.css';
-import SignUpPage from './components/user_features/login/SingUpPage';
+import SignUpPage from './components/user_features/login/SingUpPage.js';
+import { loadGenres, type Genre } from '../../api/constants.js';
 
 interface DisplayContext {
   activeDisplay:string,
@@ -33,9 +29,14 @@ interface NavOriginContext {
   toggleNavOrigin: (origin:string)=>void
 };
 
-export const ActiveDisplayContext = createContext<DisplayContext|null>(null);
-export const OpenDropdownContext = createContext<DropdownContext|null>(null);
-export const NavOriginContext = createContext<NavOriginContext|null>(null);
+interface GenresContext {
+  genres:Genre[]
+}
+
+export const ActiveDisplayContext = createContext<DisplayContext>({activeDisplay:'', toggleActiveDisplay:() => {}});
+export const OpenDropdownContext = createContext<DropdownContext>({openDropdown:'', toggleOpenDropdown:() => {}});
+export const NavOriginContext = createContext<NavOriginContext>({navOrigin:'', toggleNavOrigin:() => {}});
+export const GenresContext = createContext<GenresContext>({genres:[]})
 
 const router = createBrowserRouter([
   {path:"/", element: <HomePage/>},
@@ -64,6 +65,15 @@ export default function App() {
    function toggleNavOrigin(origin:string) {
     setNavOrigin(origin);
   };
+  
+  const [genres, setGenres] = useState<Genre[]>([])
+  useEffect(() => {
+    async function getGenres() {
+      const genres = await loadGenres()
+      setGenres(genres)
+    }
+    getGenres()
+  },[])
 
   return (
     <>
@@ -74,11 +84,13 @@ export default function App() {
     <NavOriginContext.Provider value={{navOrigin, toggleNavOrigin}}>
     <OpenDropdownContext.Provider value={{openDropdown, toggleOpenDropdown}}>
     <ActiveDisplayContext.Provider value={{activeDisplay, toggleActiveDisplay}}>
+    <GenresContext.Provider value={{genres}}>
       <div className='page-container'>
 
             <RouterProvider router={router}/>
          
       </div>
+    </GenresContext.Provider>
     </ActiveDisplayContext.Provider>
     </OpenDropdownContext.Provider>
     </NavOriginContext.Provider>

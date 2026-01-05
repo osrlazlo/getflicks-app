@@ -1,15 +1,10 @@
-import { setCORSHeaders} from "./utils/helpers.js"
-import type { Request, Response } from "express"
+import type { Router } from "express";
+import express from "express"
 
-export default async function handler(req:Request, res:Response) {
-    setCORSHeaders(res)
+const discoverRouter:Router = express.Router()
 
-    if (req.method === "OPTIONS") {
-        return res.status(200).end()
-    }
-
+discoverRouter.route("/discover").post(async (req, res) => {
     const filterParams = req.body 
-
     if (!filterParams) return res.status(400).json({error: "Filter parameters missing"}) 
 
     const options = {
@@ -31,7 +26,7 @@ export default async function handler(req:Request, res:Response) {
             `${filterParams.genres ? "&with_genres="+filterParams.genres:""}`+
             `${filterParams.country ? "&with_origin_country="+filterParams.country:""}`
         
-        console.log("URL:"+url)
+        //console.log("URL:"+url)
         
         const response = await fetch(url, options)
 
@@ -46,7 +41,6 @@ export default async function handler(req:Request, res:Response) {
         console.error("API /searchMovies failed",error)
         res.status(500).json({error: "Failed to fetch movies"})
     }
+})
 
-}
-
-
+export default discoverRouter

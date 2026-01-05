@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { defMinVoteCount } from "./constants" 
+import { defMinVoteCount } from "../../../../../api/constants" 
 import { NavOriginContext } from "../../../App"
 import { labelTopRated } from "../home/HomePage"
 

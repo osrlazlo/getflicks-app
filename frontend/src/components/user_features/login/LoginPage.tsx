@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 import "./login_page.css"
 import Footer from "../../footer/Footer"
-import { useState, type MouseEvent } from "react"
-import handleLogin from "../../../../api/auth/login"
+import { useEffect, useState, type MouseEvent } from "react"
+import { handleLogin } from "../../../../../api/auth/login"
 
 export default function LoginPage() {
 
@@ -12,13 +12,13 @@ export default function LoginPage() {
     async function login(event:MouseEvent) {
         event.preventDefault()
         const res = await handleLogin(email_username, password)
-        console.log(res.status, res.msg, res.loginValid)
+        const data = await res.json()
+        console.log(res.status, data.msg)
         //const {isEmailValid, isPasswordValid, isUsernameValid} = res.inputValidation!
         /*setIsEmailValid(isEmailValid)
         setIsPasswordValid(isPasswordValid)
         setIsUsernameValid(isUsernameValid)*/
     }
-
     /*useEffect(() => {
         if (email || username || password || passwordConfirm) {
         

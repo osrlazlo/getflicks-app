@@ -1,11 +1,11 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import MovieCard from "../MovieCard.jsx"
+import MovieCard from "../MovieCard.js"
 import "../body.css"
 
 import { FilteredMoviesContext, ActivePageContext, ParametersContext} from "./DiscoverPage.jsx"
 import PageButton from "./PageButton.jsx"
 import { BiChevronsLeft, BiChevronsRight, BiChevronLeft, BiChevronRight } from "react-icons/bi"
-import { maxPage } from "./constants.js"
+import { maxPage } from "../../../../../api/constants.js"
 
 
 function MovieList() {

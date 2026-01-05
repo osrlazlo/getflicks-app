@@ -2,8 +2,8 @@ import { useRef, useState, useEffect, useContext } from "react";
 import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
 import "./movie_card.css"
 import {createPopper, offset, viewport} from "@popperjs/core";
-import { OpenDropdownContext, ActiveDisplayContext } from "../../App";
-import { genres, months } from "./discover/constants";
+import { OpenDropdownContext, ActiveDisplayContext, GenresContext } from "../../App";
+import { months, type Genre } from "../../../../api/constants";
 import posterPlaceholder from "../../assets/poster-placeholder.png";
 import { homeLabel } from "../header/Navigator";
 
@@ -57,12 +57,23 @@ export default function MovieCard(props:Movie) {
     };
 
 function MoreInfo({desc, id, rate, voteCount, genreIds}:MoreInfoProps) {
+
+    const [genreList, setGenreList] = useState<Genre[]>()
+    const {genres} = useContext(GenresContext)
+
+    useEffect(() => {
+        async function getGenres() {
+            setGenreList(genres?.filter(g => genreIds.includes(g.id)))
+        }
+        getGenres()
+    },[])
+
     const {openDropdown, toggleOpenDropdown} = useContext(OpenDropdownContext)!;
     const isOpen = openDropdown === id ? true:false;
     
     const buttonRef = useRef<HTMLDivElement|null>(null);
     const dropdownRef = useRef<HTMLDivElement|null>(null);
-    const genreList = genres.filter(g => genreIds.includes(g.id));
+
 
     useEffect(() => {
         
@@ -99,7 +110,8 @@ function MoreInfo({desc, id, rate, voteCount, genreIds}:MoreInfoProps) {
         
         <div className={"dropdown-box"+(isOpen? "-open":"")} ref={dropdownRef}>
                 <h4>{`ID: ${id}`}</h4>
-            <div className="desc-genres-box">{genreList.map(g => (
+            <div className="desc-genres-box">
+                {genreList?.map(g => (
                 <button key={g.id} className="desc-genres">{g.name}</button>
                 ))} </div>
                 <p>{desc}<br/><br/>

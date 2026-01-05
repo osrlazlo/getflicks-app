@@ -1,11 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import SideMenuDiscover from "../../side_menu/SideMenuDiscover";
 import MovieList from "./DiscoverMovieList";
-import { filterMovies } from "../../../../api/filterMovies";
+import { filterMovies } from "../../../../../api/filterMovies";
 import { ActiveDisplayContext, NavOriginContext } from "../../../App";
 import { discoverLabel, homeLabel } from "../../header/Navigator";
 import { labelLatest, labelPopular, labelTopRated } from "../home/HomePage";
-import { sortOptions } from "./constants";
+import { sortOptions } from "../../../../../api/constants";
 import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
 export const FilteredMoviesContext = createContext()

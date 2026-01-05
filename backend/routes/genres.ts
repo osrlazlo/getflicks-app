@@ -1,18 +1,14 @@
-import { setCORSHeaders } from "./utils/helpers.js"
-import type { Request, Response } from "express"
+import type { Router } from "express";
+import express from "express"
 
-export default async function handler(req:Request, res:Response) {
-    setCORSHeaders(res)
-    //console.log(res)
+const genresRouter:Router = express.Router()
 
-    if (req.method === "OPTIONS") {
-        return res.status(200).end()
-    }
-
+genresRouter.route("/genres").get(async (_, res) => {
     const options = {
         method: "GET",
         headers: {
             accept: "application/json",
+            "Content-Type": "application/json",
             Authorization: `Bearer ${process.env.TMDB_BEARER}`
         }}
     
@@ -24,12 +20,17 @@ export default async function handler(req:Request, res:Response) {
         if (!response.ok) {
             throw new Error(`TMDB error: ${response.status}`)
         }
-
+        //console.log(response)
         const data = await response.json()
-        res.status(200).json(data)
+        const genres = data.genres
+        if (!genres) throw new Error("Error fetching genres")
+
+        return res.status(response.status).json({genres})
     }
     catch(error) {
         console.error("API /genres failed",error)
-        res.status(500).json({error: "Failed to fetch genres"})
+        return res.status(500)
     }
-}
+})
+
+export default genresRouter

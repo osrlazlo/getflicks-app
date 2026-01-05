@@ -4,13 +4,13 @@ import { useContext, useEffect, useState } from "react"
 import MovieCard from "./MovieCard"
 
 //VARS & FCTS
-import { sortOptions } from "./discover/constants"
-import { filterMovies} from "../../../api/filterMovies"
+import { sortOptions } from "../../../../api/constants"
+import { filterMovies} from "../../../../api/filterMovies"
 import { labelLatest, labelPopular, labelTopRated } from "./home/HomePage"
 import { discoverLabel } from "../header/Navigator"
 
 //TYPES
-import type { Filters } from "../../../api/filterMovies"
+import type { Filters } from "../../../../api/filterMovies"
 import type { Movie } from "./MovieCard"
 
 //CONTEXTS
@@ -50,7 +50,7 @@ export default function MovieSlider({label}: MovieSliderProps) {
     
     async function getMovieList() {
         const movies:MoviesFetchRes = await filterMovies(filters)
-        setMovieList(t => movies)
+        setMovieList(movies)
     }
     
     useEffect(() => {

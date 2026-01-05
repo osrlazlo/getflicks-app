@@ -1,7 +1,6 @@
 import { SERVER_URL } from "../utils/serverURL" 
-//import jwt from "jsonwebtoken"
 
-export async function handleLogin(emailOrUsername:string, password:string) {
+export async function handleRegister(email:string, username:string, password:string, passwordConfirm:string) {
     const options = {
         method: "POST",
         headers: {
@@ -9,9 +8,16 @@ export async function handleLogin(emailOrUsername:string, password:string) {
             accept: "application/json"
         },
         body: JSON.stringify({
-            emailOrUsername, password
+            email, username, password, passwordConfirm
         })
     }
-    const res = await fetch(`${SERVER_URL}/users/login`, options)
+    const res = await fetch(`${SERVER_URL}/users/signup`, options)
     return res
 }
+
+
+
+
+
+
+

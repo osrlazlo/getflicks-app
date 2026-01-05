@@ -3,10 +3,11 @@ import "./login_page.css"
 import Footer from "../../footer/Footer"
 import { BackHomeButton } from "./LoginPage"
 import { useEffect, useState, type MouseEvent } from "react"
-import { signUp, validateInput } from "../../../../api/auth/signup"
+import { handleRegister } from "../../../../../api/auth/register"
+import { validateInput } from "../../../../../api/utils/helpers"
 
 export default function SignUpPage() {
-
+    
     const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -18,7 +19,7 @@ export default function SignUpPage() {
 
     async function register(event:MouseEvent) {
         event.preventDefault()
-        const res = await signUp(email, username, password, passwordConfirm)
+        const res = await handleRegister(email, username, password, passwordConfirm)
         const data = await res.json()
         console.log(res.status, res,)
         const {isEmailValid, isPasswordValid, isUsernameValid} = data.inputValidation
@@ -37,7 +38,7 @@ export default function SignUpPage() {
         }
 
     }, [email, username, password, passwordConfirm])
-
+    
     return(
         <>
         <div className="login-container">

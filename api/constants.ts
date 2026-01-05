@@ -1,4 +1,4 @@
-import { API_BASE } from "../../../../api/utils/helpers"
+import { SERVER_URL } from "./utils/serverURL"
 
 //SORT OPTIONS
 export interface SortOption {
@@ -16,7 +16,7 @@ export const sortOptions:SortOption[] = [
         {id: "primary_release_date.desc", name: "Recent Release", isChecked:false},
         {id: "primary_release_date.asc", name: "Oldest Release", isChecked:false},
 
-        {id: "itle.asc", name: "Title (A-Z)", isChecked:false},
+        {id: "title.asc", name: "Title (A-Z)", isChecked:false},
         {id: "title.desc", name: "Title (Z-A)", isChecked:false}
     ]
 
@@ -27,13 +27,19 @@ export interface Genre {
     isChecked?:boolean
 }
 
-async function loadGenres() {
-    const res = await fetch(`${API_BASE}/genres`)
-    const data = await res.json();
+export async function loadGenres() {
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            accept: "application/json"
+    }}
+    const respone = await fetch(`${SERVER_URL}/genres`, options)
+    const data = await respone?.json()
+    //console.log("data", data)
     const genreList:Genre[] = data.genres.map((g:Genre) => g = {id:g.id, name:g.name, isChecked:false})
     return genreList
 }
-export const genres = await loadGenres()
 
 //MONTHS
 export const months = ["January", "February", "March", "April",

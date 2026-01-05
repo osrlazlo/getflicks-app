@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { defMinRate } from "./constants" 
+import { defMinRate } from "../../../../../api/constants" 
 
 function SelectRating({setParamRate}) {
 

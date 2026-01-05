@@ -1,6 +1,7 @@
-import { sortOptions } from "../src/components/pages/discover/constants.js"
-import { defMinRate, defMinVoteCount } from "../src/components/pages/discover/constants.js"
-import type { SortOption, Genre, Country } from "../src/components/pages/discover/constants.js"
+import { sortOptions } from "./constants.js"
+import { defMinRate, defMinVoteCount } from "./constants.js"
+import type { SortOption, Genre, Country } from "./constants.js"
+import { SERVER_URL } from "./utils/serverURL.js" 
 
 export interface Filters {
     page?:number
@@ -11,14 +12,6 @@ export interface Filters {
     sortBy?:SortOption[]
     genres?:Genre[]
     countries?:Country[]
-}
-
-interface Parameters {
-
-}
-
-export function searchMovies(params:Filters) {
-    
 }
 
 export async function filterMovies(params:Filters) {
@@ -44,16 +37,15 @@ export async function filterMovies(params:Filters) {
                  genres:genreStr, 
                  country: country ? (country.id === 0 ? "":country.id):""}
       
-    const API_BASE = import.meta.env.VITE_API_BASE
-    const response = await fetch(`${API_BASE}/discover`, 
+    const response = await fetch(`${SERVER_URL}/discover`, 
       {method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(filterParams)
       })
     
-    if (!response.ok) throw new Error("API /discover.js failed")
+    if (!response.ok) throw new Error("API /discover failed")
     const data = await response.json()
-    console.log(data)
+    //console.log(data)
     return(data)
 }
 
@@ -66,8 +58,5 @@ function parametersToString(list:Genre[]) {
     return parametersStr
 }
 
-export function getMovies() {
-
-}
 
 

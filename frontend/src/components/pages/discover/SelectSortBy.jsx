@@ -1,5 +1,5 @@
 import DropdownSelect from "./DropdownSelect.jsx"
-import {sortOptions} from "./constants"
+import {sortOptions} from "../../../../../api/constants.js"
 
 function SelectSortBy({setParamSortBy}) {
    return(<DropdownSelect list={sortOptions} listType="sort-by" multiple={false} setParam = {setParamSortBy}/>)

@@ -5,8 +5,8 @@ import SelectGenre from "./SelectGenre.jsx"
 import SelectRating from "./SelectRating.jsx"
 import SelectSortBy from "./SelectSortBy.jsx"
 import SelectVoteCount from "./SelectVoteCount.jsx"
-import { filterMovies } from "../../../../api/filterMovies"
-import { ActivePageContext, ParametersContext } from "./DiscoverPage"
+import { filterMovies } from "../../../../../api/filterMovies.js"
+import { ActivePageContext, ParametersContext } from "./DiscoverPage.jsx"
 
 import "./filters.css"
 

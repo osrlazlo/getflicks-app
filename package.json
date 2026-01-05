@@ -1,11 +1,11 @@
 {
   "name": "getflicks-app",
+  "type": "module",
   "homepage": "https://osrlazlo.github.io/getflicks-app",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run dev --prefix frontend\" \"nodemon ./backend/server.ts\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -16,20 +16,15 @@
     "@popperjs/core": "^2.11.8",
     "@supabase/supabase-js": "^2.89.0",
     "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.0.3",
     "bcryptjs": "^3.0.3",
-    "express": "^5.2.1",
+    "concurrently": "^9.2.1",
     "gh-pages": "^6.3.0",
     "jsonwebtoken": "^9.0.3",
-    "lucide-react": "^0.544.0",
-    "next": "^15.5.3",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-icons": "^5.5.0",
-    "react-router-dom": "^7.9.3",
-    "supabase": "^2.70.5"
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
