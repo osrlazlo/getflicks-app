@@ -1,3 +1,4 @@
+import handleRequestDiscover from "../backend-serverless/routes/discover.js"
 import { sortOptions } from "./constants.js"
 import { defMinRate, defMinVoteCount } from "./constants.js"
 import type { SortOption, Genre, Country } from "./constants.js"
@@ -12,6 +13,21 @@ export interface Filters {
     sortBy?:SortOption[]
     genres?:Genre[]
     countries?:Country[]
+}
+
+export interface FilterParams {
+  page:number,
+  rate:number,
+  voteCount:number, 
+  dateFrom:string|Date, 
+  dateTo:string|Date, 
+  sortBy:string|SortOption|undefined, 
+  genres:string|undefined, 
+  country: string|number
+}
+
+interface DiscoverResult {
+  data:Object
 }
 
 export async function filterMovies(params:Filters) {
@@ -37,15 +53,17 @@ export async function filterMovies(params:Filters) {
                  genres:genreStr, 
                  country: country ? (country.id === 0 ? "":country.id):""}
       
-    const response = await fetch(`${SERVER_URL}/discover`, 
+   /* const response = await fetch(`${SERVER_URL}/discover`, 
       {method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(filterParams)
-      })
+      })*/
     
-    if (!response.ok) throw new Error("API /discover failed")
-    const data = await response.json()
-    //console.log(data)
+    const response = await handleRequestDiscover(filterParams)
+    if (!response) throw new Error("API /discover failed to fetch")
+    const data = response.data
+    console.log("movie",data)
+    if (!data) throw new Error("API /discover no data returned")
     return(data)
 }
 

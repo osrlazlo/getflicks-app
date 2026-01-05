@@ -1,3 +1,4 @@
+import handleRequestGenres from "../backend-serverless/routes/genres"
 import { SERVER_URL } from "./utils/serverURL"
 
 //SORT OPTIONS
@@ -27,15 +28,23 @@ export interface Genre {
     isChecked?:boolean
 }
 
+interface GenresResponse extends Object {
+    genres: Genre[]
+}
+
 export async function loadGenres() {
-    const options = {
+    /*const options = {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
             accept: "application/json"
     }}
     const respone = await fetch(`${SERVER_URL}/genres`, options)
-    const data = await respone?.json()
+    const data = await respone?.json()*/
+    const res = await handleRequestGenres()
+    //console.log('res', res)
+    const data = res.data as GenresResponse
+    //const data = {genres:[]}
     //console.log("data", data)
     const genreList:Genre[] = data.genres.map((g:Genre) => g = {id:g.id, name:g.name, isChecked:false})
     return genreList

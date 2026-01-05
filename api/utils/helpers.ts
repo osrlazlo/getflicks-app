@@ -6,7 +6,7 @@ export function setCORSHeaders(res:Response) {
     res.setHeader("Access-Control-Allow-Headers", "Content-Type")
 }
 
-interface InputValidation {
+export interface InputValidation {
     isValid:boolean,
     isEmailValid?:boolean,
     isUsernameValid?:boolean,

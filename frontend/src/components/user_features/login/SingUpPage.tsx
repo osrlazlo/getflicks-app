@@ -4,7 +4,8 @@ import Footer from "../../footer/Footer"
 import { BackHomeButton } from "./LoginPage"
 import { useEffect, useState, type MouseEvent } from "react"
 import { handleRegister } from "../../../../../api/auth/register"
-import { validateInput } from "../../../../../api/utils/helpers"
+import { quickValidateInput, validateInput } from "../../../../../backend-serverless/helpers" 
+import type { SignupResponseData } from "../../../../../backend-serverless/routes/register"
 
 export default function SignUpPage() {
     
@@ -20,8 +21,8 @@ export default function SignUpPage() {
     async function register(event:MouseEvent) {
         event.preventDefault()
         const res = await handleRegister(email, username, password, passwordConfirm)
-        const data = await res.json()
-        console.log(res.status, res,)
+        const data = res.data as SignupResponseData
+        console.log(res.status, data)
         const {isEmailValid, isPasswordValid, isUsernameValid} = data.inputValidation
         setIsEmailValid(isEmailValid)
         setIsPasswordValid(isPasswordValid)
@@ -31,12 +32,11 @@ export default function SignUpPage() {
     useEffect(() => {
         if (email || username || password || passwordConfirm) {
         
-            const {isEmailValid, isPasswordValid, isUsernameValid} = validateInput(email, username, password, passwordConfirm)
+            const {isEmailValid, isPasswordValid, isUsernameValid} = quickValidateInput(email, username, password, passwordConfirm)
             setIsEmailValid(isEmailValid)
             setIsPasswordValid(isPasswordValid)
             setIsUsernameValid(isUsernameValid)
         }
-
     }, [email, username, password, passwordConfirm])
     
     return(

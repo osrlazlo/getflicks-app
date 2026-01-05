@@ -25,7 +25,10 @@ interface MovieSliderProps {
     label:string
 }
 interface MoviesFetchRes {
-    results:Movie[]
+    page:number,
+    results:Movie[],
+    total_pages:number,
+    total_results:number,
 }
 
 export default function MovieSlider({label}: MovieSliderProps) {
@@ -48,12 +51,13 @@ export default function MovieSlider({label}: MovieSliderProps) {
         
     const [movieList, setMovieList] = useState<MoviesFetchRes|undefined>()
     
-    async function getMovieList() {
-        const movies:MoviesFetchRes = await filterMovies(filters)
-        setMovieList(movies)
-    }
+   
     
     useEffect(() => {
+        async function getMovieList() {
+            const movies = await filterMovies(filters) as MoviesFetchRes
+            setMovieList(movies)
+        }
         getMovieList()  
     },[])
 

@@ -12,8 +12,8 @@ export default function LoginPage() {
     async function login(event:MouseEvent) {
         event.preventDefault()
         const res = await handleLogin(email_username, password)
-        const data = await res.json()
-        console.log(res.status, data.msg)
+        const data = res.data
+        console.log(res.status, res.msg)
         //const {isEmailValid, isPasswordValid, isUsernameValid} = res.inputValidation!
         /*setIsEmailValid(isEmailValid)
         setIsPasswordValid(isPasswordValid)

@@ -1,11 +1,16 @@
+
 import type { Router } from "express";
 import express from "express"
+
+/*
 import supabase from "../supabase.ts";
 import bcryptjs from "bcryptjs";
-import { validateInput } from "../../api/utils/helpers.ts"; 
+import { validateInput } from "../../api/utils/helpers.ts";
+*/
 
 const signupRouter:Router = express.Router()
 
+/*
 //user signup 
 signupRouter.route("/users/signup").post(async (req, res) => {
     
@@ -52,5 +57,6 @@ signupRouter.route("/users/signup").post(async (req, res) => {
         return res.status(500).json({msg: "Error", result: inputValidation})
     }
 })
+*/
 
 export default signupRouter
