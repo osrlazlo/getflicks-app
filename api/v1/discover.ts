@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { setCORSHeaders } from "./utils/helpers.ts";
+import { setCORSHeaders } from "./utils/helpers.js";
 import { handleRequestDiscover } from "../../backend-serverless/handlers/discover.ts";
 
 export default async function handler(req:Request, res:Response) {

@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import handleRequestGenres from "../../backend-serverless/handlers/genres.ts";
-import { setCORSHeaders } from "./utils/helpers.ts";
+import { setCORSHeaders } from "./utils/helpers.js";
 
 export default async function handler(req:Request, res:Response) {
     setCORSHeaders(res)
