@@ -1,6 +1,6 @@
 import type { Request, Response } from "express"
-import handleRequestLogin from "../../../backend-serverless/handlers/login.ts"
-import { setCORSHeaders } from "../utils/helpers.ts"
+import handleRequestLogin from "../../../backend-serverless/handlers/login.js"
+import { setCORSHeaders } from "../utils/helpers.js"
 //import jwt from "jsonwebtoken"
 
 export default async function handler(req:Request, res:Response) {
