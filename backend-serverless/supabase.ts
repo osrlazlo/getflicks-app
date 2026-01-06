@@ -6,7 +6,7 @@ if (!supabaseURL) supabaseURL = process.env.SUPABASE_URL
 let supabaseKEY = import.meta.env.VITE_SUPABASE_KEY
 if (!supabaseKEY) supabaseKEY = process.env.SUPABASE_KEY
 
-console.log("url, key", supabaseURL, supabaseKEY)
+console.log("supabase url, supabase key", supabaseURL, supabaseKEY)
 
 const supabase = createClient(supabaseURL, supabaseKEY);
 
