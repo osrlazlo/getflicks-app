@@ -6,12 +6,15 @@ export async function handleRequestDiscover(filterParams:FilterParams) {
     const res = createServerlessResponse()
 
     if (!filterParams) return res.setStatus(400).addData({error: "Filter parameters missing"}) 
+    
+    let tmdbBearer = import.meta.env.VITE_TMDB_BEARER
+    if (!tmdbBearer) tmdbBearer = process.env.TMDB_BEARER
 
     const options = {
         method: "GET",
         headers: {
             accept: "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_TMDB_BEARER}`
+            Authorization: `Bearer ${tmdbBearer}`
         }}
 
     try {

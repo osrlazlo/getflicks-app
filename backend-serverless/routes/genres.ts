@@ -2,12 +2,16 @@ import { createServerlessResponse } from "../interfaces"
 
 export async function handleRequestGenres() {
     const res = createServerlessResponse()
+    
+    let tmdbBearer = import.meta.env.VITE_TMDB_BEARER
+    if (!tmdbBearer) tmdbBearer = process.env.TMDB_BEARER
+
     const options = {
         method: "GET",
         headers: {
             accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_TMDB_BEARER}`
+            Authorization: `Bearer ${tmdbBearer}`
         }}
     
     try {

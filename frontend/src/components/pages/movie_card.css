@@ -116,7 +116,8 @@
 .desc-genres-box {
     display: flex;
     justify-content: center;
-    width: 80%;
+    flex-wrap: wrap;
+    width: 90%;
 }
 
 
