@@ -1,7 +1,7 @@
-import supabase from "../supabase.ts";
+import supabase from "../supabase.js";
 import bcryptjs from "bcryptjs";
-import { validEmailRegex, validUsernameRegex } from "../helpers.ts"
-import { createServerlessResponse } from "../interfaces.ts";
+import { createServerlessResponse } from "../interfaces.js";
+import { validEmailRegex, validUsernameRegex } from "../constants.js";
 
 interface LoginValidation {
     isUsernameValid:boolean,
