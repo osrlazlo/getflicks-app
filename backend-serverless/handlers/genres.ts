@@ -1,4 +1,4 @@
-import { createServerlessResponse } from "../interfaces.ts"
+import { createServerlessResponse } from "../interfaces.js"
 
 async function handleRequestGenres() {
     const res = createServerlessResponse()

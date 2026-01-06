@@ -1,5 +1,5 @@
-import { validEmailRegex, validPasswordRegex, validUsernameRegex } from "./constants.ts"
-import supabase from "./supabase.ts"
+import { validEmailRegex, validPasswordRegex, validUsernameRegex } from "./constants.js"
+import supabase from "./supabase.js"
 
 export interface InputValidation {
     isValid:boolean,

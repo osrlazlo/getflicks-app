@@ -1,7 +1,7 @@
-import { createServerlessResponse } from "../interfaces.ts"
-import { sortOptions, defMinRate, defMinVoteCount } from "../constants.ts"
-import type { SortOption, Country } from "../constants.ts"
-import type { Genre } from "../../functions/loadGenres.ts"
+import { createServerlessResponse } from "../interfaces.js"
+import { sortOptions, defMinRate, defMinVoteCount } from "../constants.js"
+import type { SortOption, Country } from "../constants.js"
+import type { Genre } from "../../functions/loadGenres.js"
 
 export interface Filters {
     page?:number

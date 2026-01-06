@@ -1,7 +1,7 @@
-import supabase from "../supabase.ts";
+import supabase from "../supabase.js";
 import bcryptjs from "bcryptjs";
-import { validateInput, type InputValidation } from "../helpers.ts"
-import { createServerlessResponse } from "../interfaces.ts";
+import { validateInput, type InputValidation } from "../helpers.js"
+import { createServerlessResponse } from "../interfaces.js";
 
 export interface SignupResponseData {
     msg:string,
