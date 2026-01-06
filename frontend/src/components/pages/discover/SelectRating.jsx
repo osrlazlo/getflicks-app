@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { defMinRate } from "../../../../../api/constants" 
+import { defMinRate } from "../../../../../backend-serverless/constants.ts" 
 
 function SelectRating({setParamRate}) {
 

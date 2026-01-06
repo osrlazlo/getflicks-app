@@ -3,7 +3,8 @@ import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
 import "./movie_card.css"
 import {createPopper, offset, viewport} from "@popperjs/core";
 import { OpenDropdownContext, ActiveDisplayContext, GenresContext } from "../../App";
-import { months, type Genre } from "../../../../api/constants";
+import { months } from "../../../../backend-serverless/constants";
+import type { Genre } from "../../../../functions/loadGenres";
 import posterPlaceholder from "../../assets/poster-placeholder.png";
 import { homeLabel } from "../header/Navigator";
 

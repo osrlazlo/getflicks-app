@@ -8,11 +8,12 @@ import favicon from './assets/favicon.svg';
 import HomePage from './components/pages/home/HomePage.js';
 import Head from 'next/head';
 import LoginPage from './components/user_features/login/LoginPage.js';
+import SignUpPage from './components/user_features/login/SingUpPage.js';
 
 //STYLES
 import './App.css';
-import SignUpPage from './components/user_features/login/SingUpPage.js';
-import { loadGenres, type Genre } from '../../api/constants.js';
+
+import { loadGenres, type Genre } from '../../functions/loadGenres.js'; 
 
 interface DisplayContext {
   activeDisplay:string,

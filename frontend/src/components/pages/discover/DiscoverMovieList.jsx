@@ -5,7 +5,7 @@ import "../body.css"
 import { FilteredMoviesContext, ActivePageContext, ParametersContext} from "./DiscoverPage.jsx"
 import PageButton from "./PageButton.jsx"
 import { BiChevronsLeft, BiChevronsRight, BiChevronLeft, BiChevronRight } from "react-icons/bi"
-import { maxPage } from "../../../../../api/constants.js"
+import { maxPage } from "../../../../../backend-serverless/constants.js"
 
 
 function MovieList() {

@@ -4,13 +4,13 @@ import { useContext, useEffect, useState } from "react"
 import MovieCard from "./MovieCard"
 
 //VARS & FCTS
-import { sortOptions } from "../../../../api/constants"
-import { filterMovies} from "../../../../api/filterMovies"
+import { sortOptions } from "../../../../backend-serverless/constants"
+
 import { labelLatest, labelPopular, labelTopRated } from "./home/HomePage"
 import { discoverLabel } from "../header/Navigator"
 
 //TYPES
-import type { Filters } from "../../../../api/filterMovies"
+import type { Filters } from "../../../../backend-serverless/handlers/discover" 
 import type { Movie } from "./MovieCard"
 
 //CONTEXTS
@@ -20,6 +20,7 @@ import { NavOriginContext } from "../../App"
 //STYLES
 import "./movie_slider.css"
 import { Link } from "react-router-dom"
+import { fetchMovies } from "../../../../functions/fetchMovies"
 
 interface MovieSliderProps {
     label:string
@@ -55,7 +56,7 @@ export default function MovieSlider({label}: MovieSliderProps) {
     
     useEffect(() => {
         async function getMovieList() {
-            const movies = await filterMovies(filters) as MoviesFetchRes
+            const movies = await fetchMovies(filters) as MoviesFetchRes
             setMovieList(movies)
         }
         getMovieList()  

@@ -3,9 +3,9 @@ import "./login_page.css"
 import Footer from "../../footer/Footer"
 import { BackHomeButton } from "./LoginPage"
 import { useEffect, useState, type MouseEvent } from "react"
-import { handleRegister } from "../../../../../api/auth/register"
-import { quickValidateInput, validateInput } from "../../../../../backend-serverless/helpers" 
-import type { SignupResponseData } from "../../../../../backend-serverless/routes/register"
+import { quickValidateInput } from "../../../../../functions/quickValidateInputs"
+import type { SignupResponseData } from "../../../../../backend-serverless/handlers/register"
+import { handleRegister } from "../../../../../functions/auth"
 
 export default function SignUpPage() {
     

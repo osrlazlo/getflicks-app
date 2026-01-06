@@ -1,5 +1,3 @@
-import handleRequestGenres from "../backend-serverless/routes/genres"
-import { SERVER_URL } from "./utils/serverURL"
 
 //SORT OPTIONS
 export interface SortOption {
@@ -33,17 +31,14 @@ interface GenresResponse extends Object {
 }
 
 export async function loadGenres() {
-    /*const options = {
+    const options = {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
             accept: "application/json"
     }}
-    const respone = await fetch(`${SERVER_URL}/genres`, options)
-    const data = await respone?.json()*/
-    const res = await handleRequestGenres()
-    //console.log('res', res)
-    const data = res.data as GenresResponse
+    const respone = await fetch(`http://localhost:3000/api/v1/genres`, options)
+    const data = await respone?.json()
     //const data = {genres:[]}
     //console.log("data", data)
     const genreList:Genre[] = data.genres.map((g:Genre) => g = {id:g.id, name:g.name, isChecked:false})
@@ -67,3 +62,7 @@ export interface Country {
 export const defMinRate = 0
 export const defMinVoteCount = 0
 export const maxPage = 500
+
+export const validEmailRegex = /^[a-z0-9_-]+@[a-z]+\.[a-z]{2,4}(\.[a-z]{2,4})?$/
+export const validUsernameRegex = /^(?!.*__)[a-z0-9_]{6,}$/
+export const validPasswordRegex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@$%?&*#^]{8,}$/

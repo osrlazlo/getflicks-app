@@ -1,6 +1,6 @@
 import { useContext, type Dispatch, type SetStateAction } from "react";
 import DropdownCheckbox from "./DropdownSelect.jsx";
-import { type Genre } from "../../../../../api/constants.js";
+import { type Genre } from "../../../../../functions/loadGenres.js";
 import { GenresContext } from "../../../App.js";
 
 

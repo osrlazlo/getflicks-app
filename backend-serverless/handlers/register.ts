@@ -9,7 +9,7 @@ export interface SignupResponseData {
 }
 
 //user signup 
-async function handleRequestRegister(email:string, username:string, password:string, passwordConfirm:string) {
+export async function handleRequestRegister(email:string, username:string, password:string, passwordConfirm:string) {
     
     const res = createServerlessResponse()
  
@@ -55,5 +55,3 @@ async function handleRequestRegister(email:string, username:string, password:str
         return res.setStatus(500).addData({msg: "Error"})
     }
 }
-
-export default handleRequestRegister

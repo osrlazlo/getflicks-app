@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import "./login_page.css"
 import Footer from "../../footer/Footer"
 import { useEffect, useState, type MouseEvent } from "react"
-import { handleLogin } from "../../../../../api/auth/login"
+import { handleLogin } from "../../../../../functions/auth"
 
 export default function LoginPage() {
 

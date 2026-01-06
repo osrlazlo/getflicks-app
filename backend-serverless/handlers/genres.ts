@@ -1,10 +1,9 @@
-import { createServerlessResponse } from "../interfaces"
+import { createServerlessResponse } from "../interfaces.ts"
 
-export async function handleRequestGenres() {
+async function handleRequestGenres() {
     const res = createServerlessResponse()
     
-    let tmdbBearer = import.meta.env.VITE_TMDB_BEARER
-    if (!tmdbBearer) tmdbBearer = process.env.TMDB_BEARER
+    let tmdbBearer = process.env.TMDB_BEARER
 
     const options = {
         method: "GET",

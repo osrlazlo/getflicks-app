@@ -1,13 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import SideMenuDiscover from "../../side_menu/SideMenuDiscover";
 import MovieList from "./DiscoverMovieList";
-import { filterMovies } from "../../../../../api/filterMovies";
 import { ActiveDisplayContext, NavOriginContext } from "../../../App";
 import { discoverLabel, homeLabel } from "../../header/Navigator";
 import { labelLatest, labelPopular, labelTopRated } from "../home/HomePage";
-import { sortOptions } from "../../../../../api/constants";
+import { sortOptions } from "../../../../../backend-serverless/constants";
 import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
+import { fetchMovies } from "../../../../../functions/fetchMovies";
 export const FilteredMoviesContext = createContext()
 export const ActivePageContext = createContext()
 export const ParametersContext = createContext()
@@ -45,7 +45,7 @@ function DiscoverPage() {
     useEffect(() => {
         console.log(parameters)
         //console.log(filteredMovies)
-        sendResults(filterMovies(parameters))
+        sendResults(fetchMovies(parameters))
     },[parameters])
 
     return(
